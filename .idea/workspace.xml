@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7498fe65-ca16-410e-92ab-7f16db1ac839" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/start-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Card.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/CardRender.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/start-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1k3uktK3lqbW8AM9z7l0d16w3r2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettier.files.pattern" value="{**/*,*}.{js,ts,jsx,tsx,vue}" />
+    <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="C:/Program Files/nodejs/node" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\admin\AppData\Roaming\npm\node_modules\prettier" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyProgectsNew\SHPORA_KONTUR\memory-game" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7498fe65-ca16-410e-92ab-7f16db1ac839" name="Default Changelist" comment="" />
+      <created>1604941743367</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604941743367</updated>
+      <workItem from="1604941744426" duration="1173000" />
+      <workItem from="1604981059171" duration="6343000" />
+      <workItem from="1605034614101" duration="992000" />
+      <workItem from="1605066571282" duration="1779000" />
+      <workItem from="1605077212355" duration="2307000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2660" y="280" key="FileChooserDialogImpl" timestamp="1605004394449">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1604987153605" />
+    <state x="2660" y="280" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605004394449" />
+  </component>
+</project>
