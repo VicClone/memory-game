@@ -58,6 +58,7 @@ body {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 20px;
+  perspective: 2000px;
 }
 
 .memory-game__card {
@@ -70,18 +71,25 @@ body {
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
+  transform-style: preserve-3d;
+  transition: transform .5s;
 }
 
 #card-template {
   display: none;
 }
 
-.memory-game__card.flip .memory-game__card-front {
-  display: block;
+.memory-game__card.flip  {
+  transform: rotateY(180deg);
 }
 
-.memory-game__card.flip .memory-game__card-back {
-  display: none;
+.memory-game__card-front {
+  transform: rotateY(180deg);
+}
+
+.memory-game__card-front,
+.memory-game__card-back {
+  backface-visibility: hidden;
 }
 
 .memory-game__card-img {
@@ -96,12 +104,4 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-}
-
-.memory-game__card-front {
-  display: none;
-}
-
-.memory-game__card-back {
-  display: block;
 }

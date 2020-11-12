@@ -51,11 +51,11 @@ class Game {
     if (this.openCards[0].name !== this.openCards[1].name) {
       return setTimeout(() => {
         flipBack.call(this);
-      }, 500);
+      }, 1000);
     }
     return setTimeout(() => {
       removeCards.call(this);
-    }, 500);
+    }, 1000);
   }
 
   start() {
