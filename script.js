@@ -54,7 +54,7 @@ class Game {
       }, 500);
     }
     return setTimeout(() => {
-      removeCards(this);
+      removeCards.call(this);
     }, 500);
   }
 
