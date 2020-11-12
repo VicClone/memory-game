@@ -105,17 +105,18 @@ function randomOrder(min = 0, max) {
 function flipBack() {
   for (let item of this.openCards) {
     item.card.classList.remove("flip");
-
-    item.fliped = !item.fliped;
+    item.fliped = false;
   }
   this.openCards.length = 0;
 }
 
 function uniqueNum(array) {
   const num = randomOrder(1, 45);
-  const check = array.filter((item) => item.name === num);
+  const check = array.filter((item) => {
+    return item.name === num
+  });
   if (check.length) {
-    uniqueNum(array);
+    return uniqueNum(array);
   }
   return num;
 }
