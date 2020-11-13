@@ -18,6 +18,16 @@ function generatingMaps() {
   }
 }
 
+function createFromTemplate() {
+  const cardTemplate = document.getElementById("card-template");
+  const cardClone = cardTemplate.cloneNode(true);
+  cardClone.removeAttribute("id");
+  const orderForCard = randomOrder(0, 20);
+  cardClone.setAttribute("style", `order:${orderForCard}`);
+
+  return cardClone;
+}
+
 function randomOrder(min = 0, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
@@ -48,4 +58,19 @@ function uniqueNum(array) {
   return num;
 }
 
-export { generatingMaps, randomOrder, flipBack, removeCards };
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+export {
+  generatingMaps,
+  createFromTemplate,
+  randomOrder,
+  flipBack,
+  removeCards,
+};
