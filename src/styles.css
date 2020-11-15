@@ -10,13 +10,16 @@ body {
 }
 
 .start-page {
-    display: none;
     width: 100vw;
     height: 100vh;
-    /*display: flex;*/
+    display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
+}
+
+.start-page.hide {
+    display: none;
 }
 
 .start-page__img {
@@ -47,12 +50,28 @@ body {
 }
 
 .memory-game {
-    /*display: none;*/
     display: grid;
     margin: auto;
 }
 
-.memory-game__board {
+.memory-game.hide {
+    display: none;
+}
+
+.end-page {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.end-page.hide {
+    display: none;
+}
+
+.memory-game__table {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);

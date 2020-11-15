@@ -22,4 +22,8 @@ export default class Card {
     this.render.setImgFront(this.img);
     board.appendChild(this.card);
   }
+
+  removeCard() {
+    this.card.removeChild();
+  }
 }
