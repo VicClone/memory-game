@@ -13,7 +13,7 @@ export default class User {
     return document.querySelector(".name").value;
   }
 
-  renderInTable() {
+  renderInfoUser() {
     tableName.textContent = this.name;
     tableLevel.textContent = this.gameLevel;
     tableScore.textContent = this.score;

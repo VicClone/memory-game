@@ -5,7 +5,7 @@ export default class Table {
   constructor() {
     this.cards = [];
     this.pairsInGame = 10;
-    this.maxPairsInGame = 10;
+    this.maxPairsInGame = 20;
     this.minPairsInGame = 2;
     this.table = document.getElementById("game-table");
   }
@@ -13,7 +13,6 @@ export default class Table {
   generatingMaps() {
     this.cards = [];
     this.pairsInGame = this.getPairsUser();
-
     for (let i = 1; i <= this.pairsInGame; i++) {
       let y = 0;
       const randomIdx = uniqueNum(this.cards);

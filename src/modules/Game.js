@@ -60,7 +60,7 @@ export default class Game {
     if (!this.context.user) {
       this.context.user = new User();
     }
-    this.context.user.renderInTable();
+    this.context.user.renderInfoUser();
     this.context.table.generatingMaps();
     this.setEventClickForCards(this.context.table.cards);
     this.context.guessedCards.length = 0;
