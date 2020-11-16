@@ -51,7 +51,7 @@ body {
 
 .memory-game {
     display: grid;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .memory-game.hide {
@@ -70,6 +70,21 @@ body {
 .end-page.hide {
     display: none;
 }
+
+.memory-game__title {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+}
+.memory-game__title-name{}
+.memory-game__title-level{
+    text-align: center;
+}
+
+.memory-game__title-score{
+    text-align: right;
+}
+
 
 .memory-game__table {
     margin: auto;

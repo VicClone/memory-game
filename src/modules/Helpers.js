@@ -24,15 +24,12 @@ function uniqueNum(array) {
 
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
+  const colorNameLength = 6;
   let color = "#";
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < colorNameLength; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
 }
 
-export {
-  createFromTemplate,
-  randomOrder,
-  uniqueNum,
-};
+export { createFromTemplate, randomOrder, uniqueNum };
