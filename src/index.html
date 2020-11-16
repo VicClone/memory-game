@@ -29,11 +29,16 @@
     <h2>Поздравляем, вы победили</h2>
     <button id="btn-restart" class="start-page__btn">Играть ещё?</button>
 </section>
+<section id="pause-page" class="pause-page hide">
+    <h2 class="pause-page__title">Пауза</h2>
+    <button id="btn-continue" class="start-page__btn">Продолжить</button>
+</section>
 <main id="game-page" class="memory-game hide">
     <section class="memory-game__title">
         <div class="memory-game__title-name">Игрок: <span>noName</span></div>
         <div class="memory-game__title-level">Текущий уровень: <span>0</span></div>
         <div class="memory-game__title-score">Счёт: <span>0</span></div>
+        <button id="btn-pause" class="start-page__btn">Пауза</button>
     </section>
     <section class="memory-game__table" id="game-table">
         <div class="memory-game__card active" id="card-template">

@@ -65,6 +65,9 @@ export default class Game {
     this.setEventClickForCards(this.context.table.cards);
     this.context.guessedCards.length = 0;
     this.context.openCards.length = 0;
+
+    this.setEventClickForPauseBtn();
+    this.setEventClickForContinueBtn();
   }
 
   initialGame() {
@@ -88,6 +91,24 @@ export default class Game {
       startTable.classList.add("hide");
       this.start();
     };
+  }
+
+  setEventClickForPauseBtn() {
+    const pauseBtn = document.getElementById("btn-pause");
+    const pauseTable = document.getElementById("pause-page");
+    
+    pauseBtn.onclick = () => {
+      pauseTable.classList.remove('hide');
+    }
+  }
+
+  setEventClickForContinueBtn() {
+    const continueBtn = document.getElementById("btn-continue");
+    const pauseTable = document.getElementById("pause-page");
+    
+    continueBtn.onclick = () => {
+      pauseTable.classList.add('hide');
+    }
   }
 
   win() {

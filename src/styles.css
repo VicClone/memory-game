@@ -71,6 +71,28 @@ body {
     display: none;
 }
 
+.pause-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.pause-page.hide {
+    display: none;
+}
+
+.pause-page__title {
+    color: #fff;
+}
+
 .memory-game__title {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
