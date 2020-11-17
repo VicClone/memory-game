@@ -1,5 +1,6 @@
 import Table from "./Table.js";
 import User from "./User.js";
+import Score from "./Score.js";
 import { cardsOnTheTable } from "./Helpers.js";
 
 export default class Game {
@@ -25,12 +26,17 @@ export default class Game {
   }
 
   compareCards() {
+    this.score.timerStop();
+
     if (this.context.openCards[0].name !== this.context.openCards[1].name) {
+      this.score.decrease();
+
       return setTimeout(() => {
         this.flipBack();
       }, 1000);
     }
 
+    this.score.increase();
     this.context.guessedCards.push(...this.context.openCards);
     this.context.table.cards.length === this.context.guessedCards.length
       ? setTimeout(() => {
@@ -57,6 +63,8 @@ export default class Game {
 
   start() {
     this.context.table = new Table();
+    this.score = new Score();
+
     if (!this.context.user) {
       this.context.user = new User();
     }
@@ -79,6 +87,7 @@ export default class Game {
   setEventClickForCards(cards) {
     for (const itemCard of cards) {
       itemCard.card.onclick = () => {
+        this.score.timerStart();
         this.flipping(itemCard);
       };
     }
@@ -98,8 +107,9 @@ export default class Game {
   setEventClickForPauseBtn() {
     const pauseBtn = document.getElementById("btn-pause");
     const pauseTable = document.getElementById("pause-page");
-
+    
     pauseBtn.onclick = () => {
+      this.score.timerStop();
       pauseTable.classList.remove("hide");
     };
   }
@@ -107,8 +117,9 @@ export default class Game {
   setEventClickForContinueBtn() {
     const continueBtn = document.getElementById("btn-continue");
     const pauseTable = document.getElementById("pause-page");
-
+    
     continueBtn.onclick = () => {
+      this.score.timerStart();
       pauseTable.classList.add("hide");
     };
   }
@@ -117,6 +128,9 @@ export default class Game {
     const memoryTable = document.getElementById("game-page");
     const endTable = document.getElementById("end-page");
     const restartBtn = document.getElementById("btn-restart");
+    const finalScore = document.getElementById("final-score");
+
+    finalScore.innerText = this.score.score;
     memoryTable.classList.add("hide");
     endTable.classList.remove("hide");
 
