@@ -22,6 +22,20 @@ function uniqueNum(array) {
   return num;
 }
 
+function cardsOnTheTable() {
+  const arr = this.context.table.cards;
+  function sortingOrder(a, b) {
+    return a.card.style.order - b.card.style.order;
+  }
+  const newArr = arr.sort(sortingOrder);
+
+  newArr.forEach(function (element, i) {
+    setTimeout(function () {
+      element.card.classList.remove("overseas");
+    }, 100 * ++i);
+  });
+}
+
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
   const colorNameLength = 6;
@@ -32,4 +46,4 @@ function getRandomColor() {
   return color;
 }
 
-export { createFromTemplate, randomOrder, uniqueNum };
+export { createFromTemplate, randomOrder, uniqueNum, cardsOnTheTable };

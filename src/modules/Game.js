@@ -1,9 +1,9 @@
 import Table from "./Table.js";
 import User from "./User.js";
+import { cardsOnTheTable } from "./Helpers.js";
 
 export default class Game {
   constructor() {
-    this.state = {};
     this.context = {
       user: null,
       openCards: [],
@@ -68,6 +68,8 @@ export default class Game {
 
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
+
+    cardsOnTheTable.call(this);
   }
 
   initialGame() {
@@ -96,19 +98,19 @@ export default class Game {
   setEventClickForPauseBtn() {
     const pauseBtn = document.getElementById("btn-pause");
     const pauseTable = document.getElementById("pause-page");
-    
+
     pauseBtn.onclick = () => {
-      pauseTable.classList.remove('hide');
-    }
+      pauseTable.classList.remove("hide");
+    };
   }
 
   setEventClickForContinueBtn() {
     const continueBtn = document.getElementById("btn-continue");
     const pauseTable = document.getElementById("pause-page");
-    
+
     continueBtn.onclick = () => {
-      pauseTable.classList.add('hide');
-    }
+      pauseTable.classList.add("hide");
+    };
   }
 
   win() {
