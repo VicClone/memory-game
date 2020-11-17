@@ -25,10 +25,13 @@ export default class Game {
   }
 
   compareCards() {
-    if (this.context.openCards[0].name !== this.context.openCards[1].name) {
+    if (
+      this.context.openCards[0].name !== this.context.openCards[1].name &&
+      this.context.openCards[0].bg !== this.context.openCards[1].bg
+    ) {
       return setTimeout(() => {
         this.flipBack();
-      }, 1000);
+      }, 800);
     }
 
     this.context.guessedCards.push(...this.context.openCards);
@@ -61,13 +64,14 @@ export default class Game {
       this.context.user = new User();
     }
     this.context.user.renderInfoUser();
-    this.context.table.generatingMaps();
+    this.context.table.generatingMaps(this.context.user.gameLevel);
     this.setEventClickForCards(this.context.table.cards);
-    this.context.guessedCards.length = 0;
-    this.context.openCards.length = 0;
 
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
+
+    this.context.guessedCards.length = 0;
+    this.context.openCards.length = 0;
 
     cardsOnTheTable.call(this);
   }
