@@ -1,5 +1,5 @@
 import Card from "./Card.js";
-import { complexityGame, getRandomColor, uniqueNum } from "./Helpers.js";
+import { uniqueNum, getRandomColor } from "./Helpers.js";
 
 export default class Table {
   constructor() {
@@ -12,14 +12,10 @@ export default class Table {
 
   generatingMaps(gameLevel) {
     this.cards = [];
-    // Открыть ниже строчку когда закончим код (проверять сложно)
-    this.pairsInGame = complexityGame.call(this, gameLevel);
-    console.log(this);
-    // this.pairsInGame = this.getPairsUser();
-
+    this.pairsInGame = this.getPairsUser();
     for (let i = 1; i <= this.pairsInGame; i++) {
       let y = 0;
-      const randomIdx = uniqueNum();
+      const randomIdx = uniqueNum(this.cards);
       const randomColor1 = getRandomColor();
       const randomColor2 = getRandomColor();
       const randomColor3 = getRandomColor();
@@ -34,6 +30,7 @@ export default class Table {
         y++;
       } while (y < 2);
     }
+    console.log(this.cards);
   }
 
   getPairsUser() {

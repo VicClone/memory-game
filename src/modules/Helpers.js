@@ -33,38 +33,6 @@ function cardsOnTheTable() {
   });
 }
 
-function complexityGame(gameLevel) {
-  if (gameLevel < 3) return 10; //20 default = сетка(5*4)
-  if (gameLevel >= 3 && gameLevel < 5) {
-    this.table.style.gridTemplateColumns = `repeat(6, 1fr)`;
-    return 12;
-  } //24 = сетка(4*6)
-  if (gameLevel >= 5 && gameLevel < 7) {
-    this.table.style.gridTemplateColumns = `repeat(6, 1fr)`;
-    return 15;
-  } //30 = сетка(6*5)
-  if (gameLevel >= 7 && gameLevel < 9) {
-    this.table.style.gridTemplateColumns = `repeat(6, 1fr)`;
-    return 18;
-  } //36 = сетка(6*6)
-  if (gameLevel >= 9 && gameLevel < 12) {
-    this.table.style.gridTemplateColumns = `repeat(8, 1fr)`;
-    return 20;
-  } //40 = сетка(8*5)
-  if (gameLevel >= 12 && gameLevel < 14) {
-    this.table.style.gridTemplateColumns = `repeat(7, 1fr)`;
-    return 21;
-  } //42 = сетка(6*7)
-  if (gameLevel >= 14 && gameLevel < 16) {
-    this.table.style.gridTemplateColumns = `repeat(8, 1fr)`;
-    return 24;
-  } //48 = сетка(6*8)
-  if (gameLevel >= 16) {
-    this.table.style.gridTemplateColumns = `repeat(8, 1fr)`;
-    return 26;
-  } //56 = сетка(8*7)
-}
-
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
   const colorNameLength = 6;
@@ -81,5 +49,4 @@ export {
   uniqueNum,
   cardsOnTheTable,
   getRandomColor,
-  complexityGame,
 };

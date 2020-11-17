@@ -136,10 +136,6 @@ body {
     display: none;
 }
 
-.memory-game__card.flip  {
-    transform: rotateY(180deg);
-}
-
 .memory-game__card-img {
     width: 90%;
     height: 90%;
@@ -154,10 +150,14 @@ body {
     margin: auto;
 }
 
+.memory-game__card.flip  {
+    transform: rotateY(180deg);
+}
 
 .memory-game__card-front {
     transform: rotateY(180deg);
 }
+
 .memory-game__card-back {
     background-image: url('img/bg-back-white.png');
     width: 100%;
@@ -169,6 +169,8 @@ body {
 .memory-game__card-back {
     backface-visibility: hidden;
 }
+
+
 
 
 .overseas {

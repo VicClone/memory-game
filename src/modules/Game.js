@@ -1,5 +1,6 @@
 import Table from "./Table.js";
 import User from "./User.js";
+import Score from "./Score.js";
 import { cardsOnTheTable } from "./Helpers.js";
 
 export default class Game {
@@ -25,15 +26,19 @@ export default class Game {
   }
 
   compareCards() {
+    this.score.timerStop();
     if (
-      this.context.openCards[0].name !== this.context.openCards[1].name &&
-      this.context.openCards[0].bg !== this.context.openCards[1].bg
+      this.context.openCards[0].name + this.context.openCards[0].bg !==
+      this.context.openCards[1].name + this.context.openCards[1].bg
     ) {
+      this.score.decrease();
+
       return setTimeout(() => {
         this.flipBack();
       }, 800);
     }
 
+    this.score.increase();
     this.context.guessedCards.push(...this.context.openCards);
     this.context.table.cards.length === this.context.guessedCards.length
       ? setTimeout(() => {
@@ -60,18 +65,19 @@ export default class Game {
 
   start() {
     this.context.table = new Table();
+    this.score = new Score();
+
     if (!this.context.user) {
       this.context.user = new User();
     }
     this.context.user.renderInfoUser();
     this.context.table.generatingMaps(this.context.user.gameLevel);
     this.setEventClickForCards(this.context.table.cards);
+    this.context.guessedCards.length = 0;
+    this.context.openCards.length = 0;
 
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
-
-    this.context.guessedCards.length = 0;
-    this.context.openCards.length = 0;
 
     cardsOnTheTable.call(this);
   }
@@ -83,6 +89,7 @@ export default class Game {
   setEventClickForCards(cards) {
     for (const itemCard of cards) {
       itemCard.card.onclick = () => {
+        this.score.timerStart();
         this.flipping(itemCard);
       };
     }
@@ -104,6 +111,7 @@ export default class Game {
     const pauseTable = document.getElementById("pause-page");
 
     pauseBtn.onclick = () => {
+      this.score.timerStop();
       pauseTable.classList.remove("hide");
     };
   }
@@ -113,6 +121,7 @@ export default class Game {
     const pauseTable = document.getElementById("pause-page");
 
     continueBtn.onclick = () => {
+      this.score.timerStart();
       pauseTable.classList.add("hide");
     };
   }
@@ -121,6 +130,9 @@ export default class Game {
     const memoryTable = document.getElementById("game-page");
     const endTable = document.getElementById("end-page");
     const restartBtn = document.getElementById("btn-restart");
+    const finalScore = document.getElementById("final-score");
+
+    finalScore.innerText = this.score.score;
     memoryTable.classList.add("hide");
     endTable.classList.remove("hide");
 
