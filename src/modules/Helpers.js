@@ -23,16 +23,16 @@ function uniqueNum(array) {
 }
 
 function cardsOnTheTable() {
-  const arr = this.context.table.cards;
+  const delay = 100;
   function sortingOrder(a, b) {
     return a.card.style.order - b.card.style.order;
   }
-  const newArr = arr.sort(sortingOrder);
+  const arrCards = this.context.table.cards.sort(sortingOrder);
 
-  newArr.forEach(function (element, i) {
+  arrCards.forEach(function (element, i) {
     setTimeout(function () {
       element.card.classList.remove("overseas");
-    }, 100 * ++i);
+    }, delay * ++i);
   });
 }
 
