@@ -49,8 +49,7 @@ export default class Game {
 
   flipBack() {
     for (let item of this.context.openCards) {
-      item.card.classList.remove("flip");
-      item._flipped = !item._flipped;
+      item = item.flip();
     }
     this.context.openCards.length = 0;
   }
@@ -71,6 +70,7 @@ export default class Game {
       this.context.user = new User();
     }
     this.context.user.renderInfoUser();
+
     this.context.table.generatingMaps(this.context.user.gameLevel);
     this.setEventClickForCards(this.context.table.cards);
     this.context.guessedCards.length = 0;
@@ -79,7 +79,7 @@ export default class Game {
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
 
-    cardsOnTheTable.call(this);
+    cardsOnTheTable(this.context.table.cards);
   }
 
   initialGame() {

@@ -1,11 +1,21 @@
-function createFromTemplate() {
-  const cardTemplate = document.getElementById("card-template");
-  const cardClone = cardTemplate.cloneNode(true);
-  cardClone.removeAttribute("id");
-  const orderForCard = randomOrder(0, 20);
-  cardClone.setAttribute("style", `order:${orderForCard}`);
+import { getColorBg } from "./Strategy.js";
+import Card from "./Card.js";
 
-  return cardClone;
+function mapCards(gameLevel, pairsInGame, board) {
+  let mapCards = [];
+  for (let i = 1; i <= pairsInGame; i++) {
+    let y = 0;
+    const randomIdx = uniqueNum();
+    const backGround = getColorBg(gameLevel);
+    do {
+      const card = new Card(randomIdx, `${randomIdx}.png`);
+      card.generatingCard(backGround);
+      mapCards.push(card);
+      card.createElementCard(board);
+      y++;
+    } while (y < 2);
+  }
+  return mapCards;
 }
 
 function randomOrder(min = 0, max) {
@@ -19,13 +29,12 @@ function uniqueNum() {
   return randomOrder(minNameImg, maxNameImg);
 }
 
-function cardsOnTheTable() {
+function cardsOnTheTable(cards) {
   const delay = 100;
   function sortingOrder(a, b) {
     return a.card.style.order - b.card.style.order;
   }
-  const arrCards = this.context.table.cards.sort(sortingOrder);
-
+  const arrCards = cards.sort(sortingOrder);
   arrCards.forEach(function (element, i) {
     setTimeout(function () {
       element.card.classList.remove("overseas");
@@ -44,9 +53,10 @@ function getRandomColor() {
 }
 
 export {
-  createFromTemplate,
+  // createFromTemplate,
   randomOrder,
   uniqueNum,
   cardsOnTheTable,
   getRandomColor,
+  mapCards,
 };

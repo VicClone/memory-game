@@ -1,44 +1,24 @@
-import Card from "./Card.js";
-import { uniqueNum, getRandomColor } from "./Helpers.js";
+import { mapCards } from "./Helpers.js";
+import { getCardsInGame } from "./Strategy.js";
 
 export default class Table {
   constructor() {
     this.cards = [];
     this.pairsInGame = 10;
-    this.maxPairsInGame = 20;
-    this.minPairsInGame = 2;
+    this.minLevelInGame = 1;
     this.table = document.getElementById("game-table");
   }
 
   generatingMaps(gameLevel) {
     this.cards = [];
-    this.pairsInGame = this.getPairsUser();
-    for (let i = 1; i <= this.pairsInGame; i++) {
-      let y = 0;
-      const randomIdx = uniqueNum(this.cards);
-      const randomColor1 = getRandomColor();
-      const randomColor2 = getRandomColor();
-      const randomColor3 = getRandomColor();
-      do {
-        const card = new Card(randomIdx, `${randomIdx}.png`);
-        gameLevel > 3
-          ? (card.bg = `linear-gradient(180deg, ${randomColor1} 0%, ${randomColor2} 50%,  ${randomColor3} 100%)`)
-          : (card.bg = randomColor1);
-        const frontBg = card.card.querySelector(".memory-game__card-front");
-        frontBg.style.background = card.bg;
-        this.cards.push(card);
-        card.create(this.table);
-        y++;
-      } while (y < 2);
-    }
+    // this.pairsInGame = this.getLevelGames();
+    this.pairsInGame = getCardsInGame(gameLevel);
+    this.cards = mapCards(gameLevel, this.pairsInGame, this.table);
   }
 
-  getPairsUser() {
-    let countPairs = document.getElementById("pairs-count").value;
-
-    if (countPairs < this.minPairsInGame) return this.minPairsInGame;
-    if (countPairs > this.maxPairsInGame) return this.maxPairsInGame;
-
-    return countPairs;
+  getLevelGames() {
+    let setLevelGame = document.getElementById("level-game").value;
+    if (setLevelGame < this.minLevelInGame) return this.minLevelInGame;
+    return setLevelGame;
   }
 }
