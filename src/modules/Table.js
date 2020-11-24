@@ -6,14 +6,15 @@ export default class Table {
     this.cards = [];
     this.pairsInGame = 10;
     this.minLevelInGame = 1;
-    this.table = document.getElementById("game-table");
+    this.tableElement = document.getElementById("game-table");
   }
 
   generatingMaps(gameLevel) {
     this.cards = [];
     // this.pairsInGame = this.getLevelGames();
     this.pairsInGame = getCardsInGame(gameLevel);
-    this.cards = mapCards(gameLevel, this.pairsInGame, this.table);
+    console.log(this.pairsInGame);
+    this.cards = mapCards(gameLevel, this.pairsInGame, this.tableElement);
   }
 
   getLevelGames() {
