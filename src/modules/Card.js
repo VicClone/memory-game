@@ -1,26 +1,40 @@
 import CardRender from "./CardRender.js";
 
 export default class Card {
+  _bg = "";
+  _flipped = false;
+  _name = "";
+  _img = "";
+  _render = new CardRender();
+  _card = this._render.card;
+
   constructor(name, img) {
-    this.name = name;
-    this.img = img;
-    this.bg = "";
-    this.fliped = false;
+    this._name = name;
+    this._img = img;
   }
 
-  render = new CardRender();
-  card = this.render.card;
+  get bg() {
+    return this._bg;
+  }
+
+  set bg(value) {
+    this._bg = value;
+  }
+
+  get card() {
+    return this._card;
+  }
 
   flip() {
-    if (!this.fliped) {
-      this.card.classList.add("flip");
-      this.fliped = !this.fliped;
+    if (!this._flipped) {
+      this._card.classList.add("flip");
+      this._flipped = !this._flipped;
     }
   }
 
   create(board) {
-    this.render.setImgFront(this.img);
-    board.appendChild(this.card);
+    this._render.setImgFront(this._img);
+    board.appendChild(this._card);
   }
 
   removeCard() {

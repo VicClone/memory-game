@@ -24,13 +24,13 @@ export default class Table {
         gameLevel > 3
           ? (card.bg = `linear-gradient(180deg, ${randomColor1} 0%, ${randomColor2} 50%,  ${randomColor3} 100%)`)
           : (card.bg = randomColor1);
-        card.card.style.background = card.bg;
+        const frontBg = card.card.querySelector(".memory-game__card-front");
+        frontBg.style.background = card.bg;
         this.cards.push(card);
         card.create(this.table);
         y++;
       } while (y < 2);
     }
-    console.log(this.cards);
   }
 
   getPairsUser() {

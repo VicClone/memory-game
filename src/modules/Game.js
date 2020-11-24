@@ -16,7 +16,7 @@ export default class Game {
   }
 
   flipping(card) {
-    if (!card.fliped && this.context.openCards.length < 2) {
+    if (!card.flipped && this.context.openCards.length < 2) {
       card.flip();
       this.context.openCards.push(card);
     }
@@ -50,7 +50,7 @@ export default class Game {
   flipBack() {
     for (let item of this.context.openCards) {
       item.card.classList.remove("flip");
-      item.fliped = !item.fliped;
+      item._flipped = !item._flipped;
     }
     this.context.openCards.length = 0;
   }
