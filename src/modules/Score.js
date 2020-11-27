@@ -1,7 +1,9 @@
+import { getElementFromDOM } from "./Helpers.js";
+
 export default class Score {
   constructor() {
     this.score = 0;
-    this.scoreEl = document.getElementById("score");
+    this.scoreEl = getElementFromDOM("#score");
     this.maxIncreaseValue = 5;
     this.increaseCount = this.maxIncreaseValue;
   }
