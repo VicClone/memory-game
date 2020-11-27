@@ -1,8 +1,8 @@
 import Table from "./Table.js";
 import User from "./User.js";
 import Score from "./Score.js";
-import { cardsOnTheTable } from "./Helpers.js";
 import Timer from "./Timer.js";
+import { cardsOnTheTable, getElementFromDOM } from "./Helpers.js";
 
 export default class Game {
   constructor() {
@@ -13,7 +13,7 @@ export default class Game {
       table: null,
     };
 
-    this.startBtn = document.getElementById("btn-start");
+    this.startBtn = getElementFromDOM("#btn-start");
   }
 
   flipping(card) {
@@ -71,7 +71,7 @@ export default class Game {
     if (!this.context.user) {
       this.context.user = new User();
     }
-    this.context.user.renderInfoUser();
+    this.context.user.getInfoUser();
 
     this.context.table.generatingMaps(this.context.user.gameLevel);
     this.setEventClickForCards(this.context.table.cards);
@@ -99,9 +99,8 @@ export default class Game {
 
   setEventClickForStartBtn() {
     this.startBtn.onclick = () => {
-      const memoryTable = document.getElementById("game-page");
-      const startTable = document.getElementById("start-page");
-
+      const memoryTable = getElementFromDOM("#game-page");
+      const startTable = getElementFromDOM("#start-page");
       memoryTable.classList.remove("hide");
       startTable.classList.add("hide");
       this.start();
@@ -109,9 +108,8 @@ export default class Game {
   }
 
   setEventClickForPauseBtn() {
-    const pauseBtn = document.getElementById("btn-pause");
-    const pauseTable = document.getElementById("pause-page");
-
+    const pauseBtn = getElementFromDOM("#btn-pause");
+    const pauseTable = getElementFromDOM("#pause-page");
     pauseBtn.onclick = () => {
       this.score.fineStop();
       pauseTable.classList.remove("hide");
@@ -119,8 +117,8 @@ export default class Game {
   }
 
   setEventClickForContinueBtn() {
-    const continueBtn = document.getElementById("btn-continue");
-    const pauseTable = document.getElementById("pause-page");
+    const continueBtn = getElementFromDOM("#btn-continue");
+    const pauseTable = getElementFromDOM("#pause-page");
 
     continueBtn.onclick = () => {
       this.score.fineStart();
@@ -129,10 +127,10 @@ export default class Game {
   }
 
   win() {
-    const memoryTable = document.getElementById("game-page");
-    const endTable = document.getElementById("end-page");
-    const restartBtn = document.getElementById("btn-restart");
-    const finalScore = document.getElementById("final-score");
+    const memoryTable = getElementFromDOM("#game-page");
+    const endTable = getElementFromDOM("#end-page");
+    const restartBtn = getElementFromDOM("#btn-restart");
+    const finalScore = getElementFromDOM("#final-score");
 
     finalScore.innerText = this.score.score;
     memoryTable.classList.add("hide");
@@ -142,7 +140,7 @@ export default class Game {
       memoryTable.classList.remove("hide");
       endTable.classList.add("hide");
       this.cleanTable();
-      this.context.user.gameLevel++;
+      this.context.user.levelUp();
       this.start();
     };
   }

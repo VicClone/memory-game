@@ -1,9 +1,10 @@
 import Timer from "./Timer.js";
+import { getElementFromDOM } from "./Helpers.js";
 
 export default class Score {
   constructor() {
     this.score = 0;
-    this.scoreEl = document.getElementById("score");
+    this.scoreEl = getElementFromDOM("#score");
     this.maxIncreaseValue = 5;
     this.increaseCount = this.maxIncreaseValue;
   }
@@ -44,7 +45,6 @@ export default class Score {
   }
 
   _fine(context) {
-    console.log(context.increaseCount);
     if (context.increaseCount <= 1) {
       context.#timer.intervalStop();
     }

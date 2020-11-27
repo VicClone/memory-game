@@ -52,11 +52,15 @@ function getRandomColor() {
   return color;
 }
 
+function getElementFromDOM(identifier, parent = document) {
+  return parent.querySelector(identifier);
+}
+
 export {
-  // createFromTemplate,
   randomOrder,
   uniqueNum,
   cardsOnTheTable,
   getRandomColor,
   mapCards,
+  getElementFromDOM,
 };

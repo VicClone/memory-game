@@ -1,4 +1,4 @@
-import { randomOrder } from "./Helpers.js";
+import { getElementFromDOM, randomOrder } from "./Helpers.js";
 
 export default class CardRender {
   #card = this._createFromTemplate();
@@ -8,28 +8,27 @@ export default class CardRender {
   }
 
   _createFromTemplate() {
-    const cardTemplate = document.getElementById("card-template");
+    const cardTemplate = getElementFromDOM("#card-template");
     const cardClone = cardTemplate.cloneNode(true);
     cardClone.removeAttribute("id");
-    const orderForCard = randomOrder(0, 20);
-    cardClone.setAttribute("style", `order:${orderForCard}`);
+    cardClone.style.order = randomOrder(0, 20);
 
     return cardClone;
   }
 
-  setImgFront(image) {
-    const frontImg = this.#card.querySelector(".memory-game__card-front");
+  _setFront(image) {
+    const frontImg = getElementFromDOM(".memory-game__card-front", this.#card);
     frontImg.src = `img/${image}`;
   }
 
   generatingBgCard(backGround) {
-    const frontBg = this.#card.querySelector(".memory-game__card-front");
+    const frontBg = getElementFromDOM(".memory-game__card-front", this.#card);
     frontBg.style.background = backGround;
     return backGround;
   }
 
   createElement(board, img) {
-    this.setImgFront(img);
+    this._setFront(img);
     board.appendChild(this.#card);
   }
 

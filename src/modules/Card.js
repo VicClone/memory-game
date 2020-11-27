@@ -32,6 +32,8 @@ export default class Card {
     this.#flipped = this.#render.flipCard(this.#flipped);
   }
 
+  clean() {}
+
   createElementCard(board) {
     this.#render.createElement(board, this.#img);
   }
