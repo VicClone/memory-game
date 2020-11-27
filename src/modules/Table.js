@@ -11,9 +11,6 @@ export default class Table {
     this.#cards = [];
     // this.pairsInGame = this.getLevelGames();
     this.#pairsInGame = getCardsInGame(gameLevel);
-    console.log("Level: ", gameLevel);
-    console.log("карт в игре:", this.#pairsInGame * 2);
-    console.log(this.#cards);
     this.#cards = mapCards(gameLevel, this.#pairsInGame, this.#tableElement);
   }
   get cards() {
