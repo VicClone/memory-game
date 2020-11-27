@@ -1,3 +1,5 @@
+import Timer from "./Timer.js";
+
 export default class Score {
   constructor() {
     this.score = 0;
@@ -7,12 +9,17 @@ export default class Score {
   }
 
   timerId = 0;
+  #timer = null;
+
+  initialScore() {
+    this.#timer = new Timer();
+  }
 
   renderScore() {
     this.scoreEl.innerText = this.score;
   }
 
-  increase(count) {
+  increase() {
     this.score += this.increaseCount;
     this.increaseCount = this.maxIncreaseValue;
 
@@ -28,18 +35,20 @@ export default class Score {
     this.renderScore();
   }
 
-  timerStart() {
-    if (this.timerId !== 0) return;
-
-    this.timerId = setInterval(() => {
-      this.increaseCount -= 1;
-
-      if (this.increaseCount <= 1) this.timerStop();
-    }, 1000);
+  fineStart() {
+    this.#timer.intervalStart(this._fine, 1000, this);
   }
 
-  timerStop() {
-    clearInterval(this.timerId);
-    this.timerId = 0;
+  fineStop() {
+    this.#timer.intervalStop()
+  }
+
+  _fine(context) {
+    console.log(context.increaseCount);
+    if (context.increaseCount <= 1) {
+      context.#timer.intervalStop();
+    }
+
+    context.increaseCount -= 1;
   }
 }

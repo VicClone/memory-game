@@ -2,6 +2,7 @@ import Table from "./Table.js";
 import User from "./User.js";
 import Score from "./Score.js";
 import { cardsOnTheTable } from "./Helpers.js";
+import Timer from "./Timer.js";
 
 export default class Game {
   constructor() {
@@ -26,7 +27,7 @@ export default class Game {
   }
 
   compareCards() {
-    this.score.timerStop();
+    this.score.fineStop();
     if (
       this.context.openCards[0].name + this.context.openCards[0].bg !==
       this.context.openCards[1].name + this.context.openCards[1].bg
@@ -65,6 +66,7 @@ export default class Game {
   start() {
     this.context.table = new Table();
     this.score = new Score();
+    this.score.initialScore();
 
     if (!this.context.user) {
       this.context.user = new User();
@@ -89,7 +91,7 @@ export default class Game {
   setEventClickForCards(cards) {
     for (const itemCard of cards) {
       itemCard.card.onclick = () => {
-        this.score.timerStart();
+        this.score.fineStart();
         this.flipping(itemCard);
       };
     }
@@ -111,7 +113,7 @@ export default class Game {
     const pauseTable = document.getElementById("pause-page");
 
     pauseBtn.onclick = () => {
-      this.score.timerStop();
+      this.score.fineStop();
       pauseTable.classList.remove("hide");
     };
   }
@@ -121,7 +123,7 @@ export default class Game {
     const pauseTable = document.getElementById("pause-page");
 
     continueBtn.onclick = () => {
-      this.score.timerStart();
+      this.score.fineStart();
       pauseTable.classList.add("hide");
     };
   }
