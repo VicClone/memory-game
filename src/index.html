@@ -11,7 +11,7 @@
 <section id="start-page" class="start-page">
     <img class="start-page__img" src="./img/start-logo.png" alt="start-logo">
     <label>
-        <input class="start-page__input name" type="text" placeholder="Ваше имя">
+        <input class="start-page__input name" tabindex="0"  type="text" placeholder="Ваше имя" autofocus>
     </label>
     <label>
         <input
@@ -20,13 +20,15 @@
             type="number"
             min="1"
             placeholder="Укажите уровень"
+            tabindex="1"
         >
     </label>
-    <button id="btn-start" class="start-page__btn">Начать</button>
+    <button id="btn-start" tabindex="2" class="start-page__btn">Начать</button>
 </section>
 <section id="end-page" class="end-page hide">
     <h2>Поздравляем, вы победили</h2>
-    <h3>Ваш счёт: <span id="final-score">0</span></h3>
+    <h3>Общий счет: <span id="all-score">0</span></h3>
+    <h3>Счет в текущей игре: <span id="final-score">0</span></h3>
     <button id="btn-restart" class="start-page__btn">Играть ещё?</button>
 </section>
 <section id="pause-page" class="pause-page hide">
@@ -34,26 +36,37 @@
     <button id="btn-continue" class="start-page__btn">Продолжить</button>
 </section>
 <main id="game-page" class="memory-game hide">
-    <section class="memory-game__title">
-        <div class="memory-game__title-name">Игрок: <span>noName</span></div>
-        <div class="memory-game__title-level">Текущий уровень: <span>0</span></div>
-        <div class="memory-game__title-score">Счёт: <span id="score">0</span></div>
-        <button id="btn-pause" class="start-page__btn">Пауза</button>
+    <section class="memory-game__leftSidebar">
+        <section class="memory-game__title">
+            <button id="btn-pause" class="start-page__btn">Пауза</button>
+            <div class="memory-game__title-name">Игрок: <span>noName</span></div>
+            <div class="memory-game__title-level">Текущий уровень: <span>0</span></div>
+            <div class="memory-game__title-allScore">Общий счёт: <span id="scoreAll">0</span></div>
+            <div class="memory-game__title-score">Счёт в текущей игре: <span id="score">0</span></div>
+        </section>
+        <section class="memory-game__leftSidebar--quessed">
+            <h3>Угаданные карточки:</h3>
+            <section class="cards-guesseding"></section>
+        </section>
     </section>
-    <section class="memory-game__table" id="game-table">
-        <div class="memory-game__card overseas active" id="card-template">
-            <img
-                class="memory-game__card-img memory-game__card-front"
-                src=""
-                alt="front"
-            >
-            <img
-                class="memory-game__card-img memory-game__card-back"
-                src="./img/back-new.png"
-                alt="back"
-            >
-        </div>
+    <section class="memory-game__main">
+
+        <section class="memory-game__table" id="game-table">
+            <div class="memory-game__card overseas " id="card-template">
+                <img
+                    class="memory-game__card-img memory-game__card-front"
+                    src=""
+                    alt="front"
+                >
+                <img
+                    class="memory-game__card-img memory-game__card-back"
+                    src="./img/back-new.png"
+                    alt="back"
+                >
+            </div>
+        </section>
     </section>
+
 </main>
 <script type="module" src="index.js"></script>
 </body>

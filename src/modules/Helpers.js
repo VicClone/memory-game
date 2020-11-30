@@ -1,12 +1,13 @@
 import { getColorBg } from "./Strategy.js";
 import Card from "./Card.js";
 
-function mapCards(gameLevel, pairsInGame, board) {
+function mapCards(gameLevel, counterGame, { pairsInGame, board }) {
+  console.log(pairsInGame);
   let mapCards = [];
   for (let i = 1; i <= pairsInGame; i++) {
     let y = 0;
     const randomIdx = uniqueNum();
-    const backGround = getColorBg(gameLevel);
+    const backGround = getColorBg(counterGame);
     do {
       const card = new Card(randomIdx, `${randomIdx}.png`);
       card.generatingCard(backGround);
@@ -56,6 +57,21 @@ function getElementFromDOM(identifier, parent = document) {
   return parent.querySelector(identifier);
 }
 
+function setCardWidthHeight(table, pairs) {
+  const size = 136;
+  switch (pairs) {
+    case 10:
+    case 11:
+    case 12:
+      break;
+    default:
+      table.querySelectorAll(".memory-game__card").forEach((el) => {
+        el.style.width = `${size - pairs}px`;
+        el.style.height = `${size - pairs}px`;
+      });
+  }
+}
+
 export {
   randomOrder,
   uniqueNum,
@@ -63,4 +79,5 @@ export {
   getRandomColor,
   mapCards,
   getElementFromDOM,
+  setCardWidthHeight,
 };

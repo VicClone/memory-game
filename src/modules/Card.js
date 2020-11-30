@@ -28,11 +28,13 @@ export default class Card {
     this.#bg = this.#render.generatingBgCard(backGround);
   }
 
+  guessedCard(card) {
+    this.#render.guessed(card.card);
+  }
+
   flip() {
     this.#flipped = this.#render.flipCard(this.#flipped);
   }
-
-  clean() {}
 
   createElementCard(board) {
     this.#render.createElement(board, this.#img);

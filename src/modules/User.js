@@ -1,6 +1,8 @@
-const tableName = document.querySelector(".memory-game__title-name span");
-const tableLevel = document.querySelector(".memory-game__title-level span");
-const tableScore = document.querySelector(".memory-game__title-score span");
+import { getElementFromDOM } from "./Helpers.js";
+
+const tableName = getElementFromDOM(".memory-game__title-name span");
+const tableLevel = getElementFromDOM(".memory-game__title-level span");
+const tableScore = getElementFromDOM(".memory-game__title-allScore span");
 
 export default class User {
   #name = this._getName() || "Вы не назвались!";
@@ -8,15 +10,27 @@ export default class User {
   #score = 0;
 
   _getName() {
-    return document.querySelector(".name").value;
+    return getElementFromDOM(".name").value;
   }
 
   get gameLevel() {
-    return this.#gameLevel || 1;
+    return this.#gameLevel;
+  }
+  set gameLevel(value) {
+    this.#gameLevel = value;
   }
 
-  levelUp() {
-    this.#gameLevel++;
+  levelUp(counterGames) {
+    if (counterGames % 2 === 0) {
+      return this.#gameLevel++;
+    }
+  }
+
+  get scoreUser() {
+    return this.#score;
+  }
+  set scoreUser(value) {
+    this.#score += value;
   }
 
   getInfoUser() {

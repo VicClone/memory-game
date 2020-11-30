@@ -1,4 +1,4 @@
-import { getElementFromDOM, mapCards } from "./Helpers.js";
+import { getElementFromDOM, mapCards, setCardWidthHeight } from "./Helpers.js";
 import { getCardsInGame } from "./Strategy.js";
 
 export default class Table {
@@ -7,19 +7,29 @@ export default class Table {
   #minLevelInGame = 1;
   #tableElement = getElementFromDOM("#game-table");
 
-  generatingMaps(gameLevel) {
+  generatingMaps(user, counterGame) {
     this.#cards = [];
-    // this.pairsInGame = this.getLevelGames();
+    const gameLevel = this.getLevelGames(user.gameLevel);
     this.#pairsInGame = getCardsInGame(gameLevel);
-    this.#cards = mapCards(gameLevel, this.#pairsInGame, this.#tableElement);
+    this.#cards = mapCards(gameLevel, counterGame, {
+      pairsInGame: this.#pairsInGame,
+      board: this.#tableElement,
+    });
+    const table = getElementFromDOM(".memory-game__table");
+    setCardWidthHeight(table, this.#pairsInGame);
+    return gameLevel;
   }
   get cards() {
     return this.#cards;
   }
 
-  getLevelGames() {
-    let setLevelGame = getElementFromDOM("#level-game").value;
-    if (setLevelGame < this.minLevelInGame) return this.minLevelInGame;
-    return setLevelGame;
+  getLevelGames(gameLevel) {
+    let setLevelGame = getElementFromDOM("#level-game");
+    const newGameLevel = +setLevelGame.value;
+    setLevelGame.value = "";
+    if (newGameLevel > this.#minLevelInGame) {
+      return newGameLevel;
+    }
+    return gameLevel;
   }
 }

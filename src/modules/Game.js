@@ -1,27 +1,24 @@
 import Table from "./Table.js";
 import User from "./User.js";
 import Score from "./Score.js";
-import Timer from "./Timer.js";
 import { cardsOnTheTable, getElementFromDOM } from "./Helpers.js";
 
 export default class Game {
-  constructor() {
-    this.context = {
-      user: null,
-      openCards: [],
-      guessedCards: [],
-      table: null,
-    };
-
-    this.startBtn = getElementFromDOM("#btn-start");
-  }
+  #context = {
+    user: null,
+    openCards: [],
+    guessedCards: [],
+    counterGames: 0,
+    table: null,
+  };
+  #startBtn = getElementFromDOM("#btn-start");
 
   flipping(card) {
-    if (!card.flipped && this.context.openCards.length < 2) {
+    if (!card.flipped && this.#context.openCards.length < 2) {
       card.flip();
-      this.context.openCards.push(card);
+      this.#context.openCards.push(card);
     }
-    if (this.context.openCards.length === 2) {
+    if (this.#context.openCards.length === 2) {
       this.compareCards();
     }
   }
@@ -29,59 +26,68 @@ export default class Game {
   compareCards() {
     this.score.fineStop();
     if (
-      this.context.openCards[0].name + this.context.openCards[0].bg !==
-      this.context.openCards[1].name + this.context.openCards[1].bg
+      this.#context.openCards[0].name + this.#context.openCards[0].bg !==
+      this.#context.openCards[1].name + this.#context.openCards[1].bg
     ) {
       this.score.decrease();
-
       return setTimeout(() => {
         this.flipBack();
       }, 800);
     }
 
     this.score.increase();
-    this.context.guessedCards.push(...this.context.openCards);
-    this.context.table.cards.length === this.context.guessedCards.length
+    this.#context.guessedCards.push(...this.#context.openCards);
+    this.#context.table.cards.length === this.#context.guessedCards.length
       ? setTimeout(() => {
           this.win();
         }, 500)
-      : this.removeCards();
+      : setTimeout(() => {
+          this.removeCards();
+        }, 500);
   }
 
   flipBack() {
-    for (let item of this.context.openCards) {
+    for (let item of this.#context.openCards) {
       item = item.flip();
     }
-    this.context.openCards.length = 0;
+    this.#context.openCards.length = 0;
   }
 
   removeCards() {
-    for (let item of this.context.openCards) {
-      item.card.classList.remove("active");
+    for (let item of this.#context.openCards) {
+      item.guessedCard(item);
+      item.card.classList.remove("flip");
+      item.card.classList.add("guessed");
       item.active = !item.active;
     }
-    this.context.openCards.length = 0;
+    this.#context.openCards.length = 0;
   }
 
   start() {
-    this.context.table = new Table();
+    this.#context.table = new Table();
     this.score = new Score();
     this.score.initialScore();
+    const blockGuessed = getElementFromDOM(".cards-guesseding");
+    blockGuessed.innerHTML = "";
+    this.#context.counterGames++;
 
-    if (!this.context.user) {
-      this.context.user = new User();
+    if (!this.#context.user) {
+      this.#context.user = new User();
     }
-    this.context.user.getInfoUser();
 
-    this.context.table.generatingMaps(this.context.user.gameLevel);
-    this.setEventClickForCards(this.context.table.cards);
-    this.context.guessedCards.length = 0;
-    this.context.openCards.length = 0;
+    this.#context.user.gameLevel = this.#context.table.generatingMaps(
+      this.#context.user,
+      this.#context.counterGames
+    );
+    this.setEventClickForCards(this.#context.table.cards);
+    this.#context.guessedCards.length = 0;
+    this.#context.openCards.length = 0;
 
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
 
-    cardsOnTheTable(this.context.table.cards);
+    cardsOnTheTable(this.#context.table.cards);
+    this.#context.user.getInfoUser();
   }
 
   initialGame() {
@@ -98,7 +104,7 @@ export default class Game {
   }
 
   setEventClickForStartBtn() {
-    this.startBtn.onclick = () => {
+    this.#startBtn.onclick = () => {
       const memoryTable = getElementFromDOM("#game-page");
       const startTable = getElementFromDOM("#start-page");
       memoryTable.classList.remove("hide");
@@ -131,8 +137,10 @@ export default class Game {
     const endTable = getElementFromDOM("#end-page");
     const restartBtn = getElementFromDOM("#btn-restart");
     const finalScore = getElementFromDOM("#final-score");
-
+    const finalScoreAll = getElementFromDOM("#all-score");
     finalScore.innerText = this.score.score;
+    this.#context.user.scoreUser = this.score.score;
+    finalScoreAll.textContent = this.#context.user.scoreUser;
     memoryTable.classList.add("hide");
     endTable.classList.remove("hide");
 
@@ -140,13 +148,14 @@ export default class Game {
       memoryTable.classList.remove("hide");
       endTable.classList.add("hide");
       this.cleanTable();
-      this.context.user.levelUp();
+
+      this.#context.user.levelUp(this.#context.counterGames);
       this.start();
     };
   }
 
   cleanTable() {
-    for (const item of this.context.table.cards) {
+    for (const item of this.#context.table.cards) {
       item.card.remove();
     }
   }
