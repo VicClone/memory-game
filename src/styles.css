@@ -208,7 +208,7 @@ body {
     transform-style: preserve-3d;
     transition: transform .5s;
     border: 7px solid;
-    border-image: url(img/style/border-card.png) 80 round round;
+    border-image: url(img/style/border-card.png) 50 round round;
 }
 
 .memory-game__card-img {

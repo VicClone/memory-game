@@ -117,3 +117,6 @@
     background-repeat: no-repeat;
     height: 156px;
 }
+.border-green {
+    border: 7px solid green
+}
