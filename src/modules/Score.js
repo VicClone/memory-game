@@ -11,9 +11,11 @@ export default class Score {
 
   timerId = 0;
   #timer = null;
+  #timeStartGame = 0;
 
   initialScore() {
     this.#timer = new Timer();
+    this.#timeStartGame = new Date();
   }
 
   renderScore() {
@@ -27,12 +29,12 @@ export default class Score {
     this.renderScore();
   }
 
-  decrease() {
+  decrease(value) {
     this.increaseCount = this.maxIncreaseValue;
+    const scoreDecrease = this.score - value;
 
-    if (this.score === 0) return;
+    this.score = scoreDecrease > 0 ? scoreDecrease : 0;
 
-    this.score -= 1;
     this.renderScore();
   }
 
@@ -50,5 +52,13 @@ export default class Score {
     }
 
     context.increaseCount -= 1;
+  }
+
+  addFineTimeGame() {
+    const timeEndGame = new Date();
+    const timeGameInMinute = Math.floor((timeEndGame - this.#timeStartGame) / (1000 * 60));
+    console.log(timeGameInMinute, 'minutes in game')
+
+    this.decrease(timeGameInMinute);
   }
 }

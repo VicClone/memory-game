@@ -29,7 +29,7 @@ export default class Game {
       this.#context.openCards[0].name + this.#context.openCards[0].bg !==
       this.#context.openCards[1].name + this.#context.openCards[1].bg
     ) {
-      this.score.decrease();
+      this.score.decrease(1);
       return setTimeout(() => {
         this.flipBack();
       }, 800);
@@ -138,6 +138,9 @@ export default class Game {
     const restartBtn = getElementFromDOM("#btn-restart");
     const finalScore = getElementFromDOM("#final-score");
     const finalScoreAll = getElementFromDOM("#all-score");
+    
+    this.score.addFineTimeGame();
+
     finalScore.innerText = this.score.score;
     this.#context.user.scoreUser = this.score.score;
     finalScoreAll.textContent = this.#context.user.scoreUser;

@@ -12,4 +12,8 @@ export default class Timer {
     clearInterval(this.#intervalId);
     this.#intervalId = 0;
   }
+
+  getCurrentTime() {
+    return new Date();
+  }
 }
