@@ -2,7 +2,6 @@ import { getColorBg } from "./Strategy.js";
 import Card from "./Card.js";
 
 function mapCards(gameLevel, counterGame, { pairsInGame, board }) {
-  console.log(pairsInGame);
   let mapCards = [];
   for (let i = 1; i <= pairsInGame; i++) {
     let y = 0;
@@ -28,19 +27,6 @@ function uniqueNum() {
   const minNameImg = 1;
   const maxNameImg = 45;
   return randomOrder(minNameImg, maxNameImg);
-}
-
-function cardsOnTheTable(cards) {
-  const delay = 100;
-  function sortingOrder(a, b) {
-    return a.card.style.order - b.card.style.order;
-  }
-  const arrCards = cards.sort(sortingOrder);
-  arrCards.forEach(function (element, i) {
-    setTimeout(function () {
-      element.card.classList.remove("overseas");
-    }, delay * ++i);
-  });
 }
 
 function getRandomColor() {
@@ -75,7 +61,6 @@ function setCardWidthHeight(table, pairs) {
 export {
   randomOrder,
   uniqueNum,
-  cardsOnTheTable,
   getRandomColor,
   mapCards,
   getElementFromDOM,

@@ -1,0 +1,119 @@
+.style__block {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: url("img/style/border-gorizont.png");
+    background-repeat: repeat-x;
+}
+
+.style__block--left {
+    width: 320px;
+
+}
+
+.style__block--left-top {
+    width: 220px;
+    height: 220px;
+    background: url('img/style/left-top.png') ;
+    background-repeat: no-repeat;
+}
+.style__block--main{
+    width: 100%;
+    background-image: url('img/style/right-top2.png') ;
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+.fist-line {
+    display: grid;
+    grid-template-columns:25% 45%;
+    height: 130px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.memory-game__title-score {
+    text-align: center;
+}
+.memory-game__title-level {
+    text-align: right;
+    padding-right: 15px;
+}
+
+.memory-game__title-name {
+    display: flex;
+    background-image: url("img/style/name-gamer.png");
+    height: 84px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    text-transform: capitalize;
+}
+
+.memory-game__title-name span {
+    font-size: 25px;
+}
+
+#score,
+#scoreAll,
+.memory-game__title-level {
+    font-size: 45px;
+}
+
+#btn-pause {
+    z-index: 1;
+    border: none;
+    position:absolute;
+    right:35px;
+    top:38px;
+    width: 50px;
+    height: 50px;
+    background:none ;
+    background-image: url("img/style/pause.svg");
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+#btn-pause:hover{
+    background-image: url("img/style/pause-hover.svg");
+}
+
+.memory-game__title-allScore {
+    display: flex;
+    width: 165px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+#scoreAll {
+
+}
+
+.memory-game__leftSidebar--quessed {
+    display:grid;
+    width: 100%;
+    margin-left: -15px;
+}
+.guessed-top {
+    background-image: url("img/style/top-guessed.png");
+    background-repeat: no-repeat;
+    height: 65px;
+    text-align: center;
+    padding: 0;
+    padding-top: 25px;
+}
+.cards-guesseding {
+    background-image: url("img/style/center-guessed.png");
+    background-repeat: repeat-y;
+    /*min-height: 250px;*/
+    padding: 0 60px;
+}
+.gueseed-bottom {
+    background-image: url("img/style/bottom-guessed.png");
+    background-repeat: no-repeat;
+    height: 156px;
+}

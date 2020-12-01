@@ -1,7 +1,7 @@
 import Table from "./Table.js";
 import User from "./User.js";
 import Score from "./Score.js";
-import { cardsOnTheTable, getElementFromDOM } from "./Helpers.js";
+import { getElementFromDOM } from "./Helpers.js";
 
 export default class Game {
   #context = {
@@ -86,7 +86,8 @@ export default class Game {
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
 
-    cardsOnTheTable(this.#context.table.cards);
+    // this._cardsOnTheTable(this.#context.table.cards);
+    this.#context.table.cardsOnTheTable();
     this.#context.user.getInfoUser();
   }
 

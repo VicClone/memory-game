@@ -6,8 +6,17 @@
     <title>Memory game</title>
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./design.css">
 </head>
 <body>
+<div class="style__block">
+    <div class="style__block--left">
+        <div class="style__block--left-top"></div>
+    </div>
+    <div class="style__block--main">
+        <button id="btn-pause" class="start-page__btn"></button>
+    </div>
+</div>
 <section id="start-page" class="start-page">
     <img class="start-page__img" src="./img/start-logo.png" alt="start-logo">
     <label>
@@ -38,15 +47,22 @@
 <main id="game-page" class="memory-game hide">
     <section class="memory-game__leftSidebar">
         <section class="memory-game__title">
-            <button id="btn-pause" class="start-page__btn">Пауза</button>
+            <div class="fist-line">
+                <div class="memory-game__title-score"><span id="score">0</span></div>
+                <div class="memory-game__title-level">LV: <span>0</span></div>
+            </div>
+
+            <div class="memory-game__title-allScore">Общий счёт: <span id="scoreAll">1235</span></div>
             <div class="memory-game__title-name">Игрок: <span>noName</span></div>
-            <div class="memory-game__title-level">Текущий уровень: <span>0</span></div>
-            <div class="memory-game__title-allScore">Общий счёт: <span id="scoreAll">0</span></div>
-            <div class="memory-game__title-score">Счёт в текущей игре: <span id="score">0</span></div>
+
+
         </section>
         <section class="memory-game__leftSidebar--quessed">
-            <h3>Угаданные карточки:</h3>
+            <div class="guessed-top">
+                <h3>Угаданные карточки:</h3>
+            </div>
             <section class="cards-guesseding"></section>
+            <div class="gueseed-bottom"></div>
         </section>
     </section>
     <section class="memory-game__main">
