@@ -1,6 +1,7 @@
 import Table from "./Table.js";
 import User from "./User.js";
 import Score from "./Score.js";
+import Leaderboard from "./Leaderboard.js";
 import { cardsOnTheTable, getElementFromDOM } from "./Helpers.js";
 
 export default class Game {
@@ -88,6 +89,9 @@ export default class Game {
 
     cardsOnTheTable(this.#context.table.cards);
     this.#context.user.getInfoUser();
+
+    const leaderboard = new Leaderboard();
+    leaderboard.write();
   }
 
   initialGame() {
