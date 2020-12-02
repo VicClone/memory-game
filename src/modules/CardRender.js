@@ -11,7 +11,7 @@ export default class CardRender {
     const cardTemplate = getElementFromDOM("#card-template");
     const cardClone = cardTemplate.cloneNode(true);
     cardClone.removeAttribute("id");
-    cardClone.style.order = randomOrder(0, 20);
+    cardClone.style.order = randomOrder(0, 56);
 
     return cardClone;
   }

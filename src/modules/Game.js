@@ -1,8 +1,12 @@
 import Table from "./Table.js";
 import User from "./User.js";
 import Score from "./Score.js";
+<<<<<<< HEAD
 import Leaderboard from "./Leaderboard.js";
 import { cardsOnTheTable, getElementFromDOM } from "./Helpers.js";
+=======
+import { getElementFromDOM } from "./Helpers.js";
+>>>>>>> a8e0ef6d9a2a4631c6720a537c655e2696b1dfdc
 
 export default class Game {
   #context = {
@@ -87,7 +91,8 @@ export default class Game {
     this.setEventClickForPauseBtn();
     this.setEventClickForContinueBtn();
 
-    cardsOnTheTable(this.#context.table.cards);
+    // this._cardsOnTheTable(this.#context.table.cards);
+    this.#context.table.cardsOnTheTable();
     this.#context.user.getInfoUser();
   }
 
