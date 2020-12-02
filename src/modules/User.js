@@ -20,6 +20,10 @@ export default class User {
     this.#gameLevel = value;
   }
 
+  get name() {
+    return this.#name;
+  }
+
   levelUp(counterGames) {
     if (counterGames % 2 === 0) {
       return this.#gameLevel++;

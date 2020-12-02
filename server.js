@@ -1,5 +1,6 @@
 const { request, response } = require('express');
 const express = require('express');
+const fs = require('fs');
 
 const app = express();
 const port = 3000;
@@ -10,13 +11,10 @@ app.post('/leaderboard', jsonParser, (request, response) => {
   console.log(request.body);
 
   if (!request.body) return response.sendStatus(400);
+  addInJSON('leaderboard.json', request.body);
 
   response.json(request.body);
 });
-
-// app.use(function (request, response) {
-//   response.sendFile(__dirname + "/src/index.html");
-// });
 
 app.use(express.static(__dirname + '/src/'));
 
@@ -27,3 +25,34 @@ app.listen(port, (err) => {
 
   console.log(`server is listening on ${port}`);
 });
+
+function addInJSON(fileName, data) {
+  try {
+    if (fs.existsSync(fileName)) {
+      const read = readJSON(fileName);
+      read.then(result => {
+        writeJSON(fileName, [...result, data]);
+      })
+    } else {
+      writeJSON(fileName, [data]);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function writeJSON(fileName, data) {
+  fs.writeFileSync(fileName, JSON.stringify(data));
+}
+
+function readJSON(fileName) {
+  return new Promise(function(resolve, reject) {
+    fs.readFile(fileName, 'utf8', function (err, data) {
+      if (err) {
+        reject(err)
+      }
+
+      resolve(JSON.parse(data));
+    });
+  })
+}

@@ -89,9 +89,6 @@ export default class Game {
 
     cardsOnTheTable(this.#context.table.cards);
     this.#context.user.getInfoUser();
-
-    const leaderboard = new Leaderboard();
-    leaderboard.write();
   }
 
   initialGame() {
@@ -150,6 +147,13 @@ export default class Game {
     finalScoreAll.textContent = this.#context.user.scoreUser;
     memoryTable.classList.add("hide");
     endTable.classList.remove("hide");
+
+    const leaderboard = new Leaderboard();
+    leaderboard.write(
+      this.#context.user.name,
+      this.#context.user.scoreUser,
+      this.#context.user.gameLevel
+    );
 
     restartBtn.onclick = () => {
       memoryTable.classList.remove("hide");
