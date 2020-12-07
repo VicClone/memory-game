@@ -155,6 +155,8 @@ export default class Game {
       this.#context.user.scoreUser,
       this.#context.user.gameLevel
     );
+    
+    leaderboard.create();
 
     restartBtn.onclick = () => {
       memoryTable.classList.remove("hide");
