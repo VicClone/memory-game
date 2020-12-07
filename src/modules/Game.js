@@ -140,7 +140,7 @@ export default class Game {
     const restartBtn = getElementFromDOM("#btn-restart");
     const finalScore = getElementFromDOM("#final-score");
     const finalScoreAll = getElementFromDOM("#all-score");
-    
+
     this.score.addFineTimeGame();
 
     finalScore.innerText = this.score.score;
@@ -161,7 +161,10 @@ export default class Game {
       endTable.classList.add("hide");
       this.cleanTable();
 
-      this.#context.user.levelUp(this.#context.counterGames);
+      this.#context.user.selectLevel(
+        this.#context.counterGames,
+        this.score.score
+      );
       this.start();
     };
   }

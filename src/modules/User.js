@@ -24,7 +24,11 @@ export default class User {
     return this.#name;
   }
 
-  levelUp(counterGames) {
+  selectLevel(counterGames, scoreGame) {
+    const babGame = 8;
+    if (scoreGame < babGame && this.#gameLevel > 1) {
+      return this.#gameLevel--;
+    }
     if (counterGames % 2 === 0) {
       return this.#gameLevel++;
     }
