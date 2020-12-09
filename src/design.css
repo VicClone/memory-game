@@ -3,21 +3,21 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: url("img/style/border-gorizont.png");
+    background-image: url("img/style/border-gorizont.png");
     background-repeat: repeat-x;
 }
 
 .style__block--left {
     width: 320px;
-
 }
 
 .style__block--left-top {
     width: 220px;
     height: 220px;
-    background: url('img/style/left-top.png') ;
+    background-image: url('img/style/left-top.png') no-repeat ;
     background-repeat: no-repeat;
 }
+
 .style__block--main{
     width: 100%;
     background-image: url('img/style/right-top2.png') ;
@@ -38,6 +38,7 @@
 .memory-game__title-score {
     text-align: center;
 }
+
 .memory-game__title-level {
     text-align: right;
     padding-right: 15px;
@@ -89,15 +90,12 @@
     margin-bottom: 25px;
 }
 
-#scoreAll {
-
-}
-
 .memory-game__leftSidebar--quessed {
     display:grid;
     width: 100%;
     margin-left: -15px;
 }
+
 .guessed-top {
     background-image: url("img/style/top-guessed.png");
     background-repeat: no-repeat;
@@ -106,17 +104,19 @@
     padding: 0;
     padding-top: 25px;
 }
+
 .cards-guesseding {
     background-image: url("img/style/center-guessed.png");
     background-repeat: repeat-y;
-    /*min-height: 250px;*/
     padding: 0 60px;
 }
+
 .gueseed-bottom {
     background-image: url("img/style/bottom-guessed.png");
     background-repeat: no-repeat;
     height: 156px;
 }
+
 .border-green {
     border: 7px solid green
 }

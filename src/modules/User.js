@@ -1,23 +1,25 @@
-import { getElementFromDOM } from "./Helpers.js";
+import { getElementFromDOM } from './Helpers.js';
+import { v4 as uuid } from 'uuid';
 
-const tableName = getElementFromDOM(".memory-game__title-name span");
-const tableLevel = getElementFromDOM(".memory-game__title-level span");
-const tableScore = getElementFromDOM(".memory-game__title-allScore span");
+const tableName = getElementFromDOM('.memory-game__title-name span');
+const tableLevel = getElementFromDOM('.memory-game__title-level span');
+const tableScore = getElementFromDOM('.memory-game__title-allScore span');
 
 export default class User {
-  #name = this._getName() || "Вы не назвались!";
-  #gameLevel = 1;
-  #score = 0;
+  _id = uuid();
+  _name = this._getName() || 'Вы не назвались!';
+  _gameLevel = 1;
+  _score = 0;
 
   _getName() {
-    return getElementFromDOM(".name").value;
+    return getElementFromDOM('.name').value;
   }
 
   get gameLevel() {
-    return this.#gameLevel;
+    return this._gameLevel;
   }
   set gameLevel(value) {
-    this.#gameLevel = value;
+    this._gameLevel = value;
   }
 
   get name() {
@@ -26,24 +28,24 @@ export default class User {
 
   selectLevel(counterGames, scoreGame) {
     const babGame = 8;
-    if (scoreGame < babGame && this.#gameLevel > 1) {
-      return this.#gameLevel--;
+    if (scoreGame < babGame && this._gameLevel > 1) {
+      return this._gameLevel--;
     }
     if (counterGames % 2 === 0) {
-      return this.#gameLevel++;
+      return this._gameLevel++;
     }
   }
 
   get scoreUser() {
-    return this.#score;
+    return this._score;
   }
   set scoreUser(value) {
-    this.#score += value;
+    this._score += value;
   }
 
   getInfoUser() {
-    tableName.textContent = this.#name;
-    tableLevel.textContent = this.#gameLevel;
-    tableScore.textContent = this.#score;
+    tableName.textContent = this._name;
+    tableLevel.textContent = this._gameLevel;
+    tableScore.textContent = this._score;
   }
 }

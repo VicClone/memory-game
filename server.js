@@ -8,7 +8,6 @@ const port = 3000;
 const jsonParser = express.json();
 
 app.post('/leaderboard', jsonParser, (request, response) => {
-
   if (!request.body) return response.sendStatus(400);
   addInJSON('leaderboard.json', request.body);
 
@@ -17,10 +16,10 @@ app.post('/leaderboard', jsonParser, (request, response) => {
 
 app.get('/leaderboard', jsonParser, (request, response) => {
   readJSON('leaderboard.json')
-    .then(result => {
-      response.send(result)
+    .then((result) => {
+      response.send(result);
     })
-    .catch(error => response.send(error))
+    .catch((error) => response.send(error));
 });
 
 app.use(express.static(__dirname + '/src/'));
@@ -37,9 +36,9 @@ function addInJSON(fileName, data) {
   try {
     if (fs.existsSync(fileName)) {
       const read = readJSON(fileName);
-      read.then(result => {
+      read.then((result) => {
         writeJSON(fileName, [...result, data]);
-      })
+      });
     } else {
       writeJSON(fileName, [data]);
     }
@@ -53,13 +52,12 @@ function writeJSON(fileName, data) {
 }
 
 function readJSON(fileName) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     fs.readFile(fileName, 'utf8', function (err, data) {
       if (err) {
-        reject(err)
+        reject(err);
       }
-
       resolve(JSON.parse(data));
     });
-  })
+  });
 }

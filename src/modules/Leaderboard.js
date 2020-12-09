@@ -1,3 +1,5 @@
+import { getElementFromDOM } from './Helpers';
+
 export default class Leaderboard {
   write(userName, score, level) {
     const player = {
@@ -6,10 +8,10 @@ export default class Leaderboard {
       level: level,
     };
 
-    fetch("/leaderboard", {
-      method: "POST",
+    fetch('/leaderboard', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
+        'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify(player),
     })
@@ -18,29 +20,42 @@ export default class Leaderboard {
   }
 
   read() {
-    return fetch("/leaderboard")
-      .then(response => {
+    return fetch('/leaderboard')
+      .then((response) => {
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         return data;
       })
       .catch((error) => console.error(error));
   }
 
   render(leaders) {
-    const leaderboardElement = document.getElementById('lidearboard');
-    const leaderListElement =  leaderboardElement.querySelector('.lidearboard__list');
-    const leaderListItemElement =  leaderboardElement.querySelector('.lidearboard__list-item');
-
-    
+    const leaderboardElement = getElementFromDOM('#lidearboard');
+    const leaderListElement = getElementFromDOM(
+      '.lidearboard__list',
+      leaderboardElement
+    );
+    const leaderListItemElement = getElementFromDOM(
+      '.lidearboard__list-item',
+      leaderboardElement
+    );
 
     for (let i = 0; i < leaders.length; i++) {
       const leaderListItemCloneElement = leaderListItemElement.cloneNode(true);
-      const userPositionElement = leaderListItemCloneElement.querySelector('.lidearboard__position');
-      const userNameElement = leaderListItemCloneElement.querySelector('.lidearboard__name');
-      const userScoreElement = leaderListItemCloneElement.querySelector('.lidearboard__score');
-      
+      const userPositionElement = getElementFromDOM(
+        '.lidearboard__position',
+        leaderListItemCloneElement
+      );
+      const userNameElement = getElementFromDOM(
+        '.lidearboard__name',
+        leaderListItemCloneElement
+      );
+      const userScoreElement = getElementFromDOM(
+        '.lidearboard__score',
+        leaderListItemCloneElement
+      );
+
       userPositionElement.innerText = i + 1;
       userNameElement.innerText = leaders[i].name;
       userScoreElement.innerText = leaders[i].score;
@@ -50,11 +65,9 @@ export default class Leaderboard {
   }
 
   create() {
-    this.read()
-      .then(leaders => {
-          leaders.sort((a, b) => b.score - a.score);
-
-          this.render(leaders);
-      });
+    this.read().then((leaders) => {
+      leaders.sort((a, b) => b.score - a.score);
+      this.render(leaders);
+    });
   }
 }

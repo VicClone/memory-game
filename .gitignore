@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
+.prettierrc
 node_modules/
 package-lock.json
 leaderboard.json

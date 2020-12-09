@@ -1,4 +1,4 @@
-import nextStepGame from "./nextStepGame.js";
+import nextStepGame from './nextStepGame.js';
 
 export default function (context, score) {
   score.fineStop();
@@ -8,7 +8,7 @@ export default function (context, score) {
   ) {
     score.decrease(1);
     return setTimeout(() => {
-      context.state = "flipBack";
+      context.state = 'flipBack';
       nextStepGame(context, score);
     }, 800);
   }
@@ -17,11 +17,11 @@ export default function (context, score) {
   context.guessedCards.push(...context.openCards);
   context.table.cards.length === context.guessedCards.length
     ? setTimeout(() => {
-      context.state = "win";
-      nextStepGame(context, score);
-    }, 500)
+        context.state = 'win';
+        nextStepGame(context, score);
+      }, 500)
     : setTimeout(() => {
-      context.state = "removeCards";
-      nextStepGame(context, score);
-    }, 500);
+        context.state = 'removeCards';
+        nextStepGame(context, score);
+      }, 500);
 }
