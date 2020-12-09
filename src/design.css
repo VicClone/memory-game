@@ -14,7 +14,7 @@
 .style__block--left-top {
     width: 220px;
     height: 220px;
-    background-image: url('img/style/left-top.png') no-repeat ;
+    background-image: url('img/style/left-top.png');
     background-repeat: no-repeat;
 }
 

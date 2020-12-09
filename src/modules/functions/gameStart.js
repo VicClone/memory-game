@@ -1,15 +1,15 @@
-import { getElementFromDOM } from "../Helpers.js";
-import Score from "../Score.js";
-import User from "../User.js";
-import nextStepGame from "./nextStepGame.js";
-import Table from "../Table.js";
+import { getElementFromDOM } from '../Helpers.js';
+import Score from '../Score.js';
+import User from '../User.js';
+import nextStepGame from './nextStepGame.js';
+import Table from '../Table.js';
 
 export default function (context, score) {
   context.table = new Table();
   score = new Score();
   score.initialScore();
-  const blockGuessed = getElementFromDOM(".cards-guesseding");
-  blockGuessed.innerHTML = "";
+  const blockGuessed = getElementFromDOM('.cards-guesseding');
+  blockGuessed.innerHTML = '';
   context.counterGames++;
 
   if (!context.user) {
@@ -46,26 +46,26 @@ function flipping(card, context, score) {
     context.openCards.push(card);
   }
   if (context.openCards.length === 2) {
-    context.state = "compareCards";
+    context.state = 'compareCards';
     nextStepGame(context, score);
   }
 }
 
 function setEventClickForPauseBtn(score) {
-  const pauseBtn = getElementFromDOM("#btn-pause");
-  const pauseTable = getElementFromDOM("#pause-page");
+  const pauseBtn = getElementFromDOM('#btn-pause');
+  const pauseTable = getElementFromDOM('#pause-page');
   pauseBtn.onclick = () => {
     score.fineStop();
-    pauseTable.classList.remove("hide");
+    pauseTable.classList.remove('hide');
   };
 }
 
 function setEventClickForContinueBtn(score) {
-  const continueBtn = getElementFromDOM("#btn-continue");
-  const pauseTable = getElementFromDOM("#pause-page");
+  const continueBtn = getElementFromDOM('#btn-continue');
+  const pauseTable = getElementFromDOM('#pause-page');
 
   continueBtn.onclick = () => {
     score.fineStart();
-    pauseTable.classList.add("hide");
+    pauseTable.classList.add('hide');
   };
 }

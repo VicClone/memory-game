@@ -1,5 +1,4 @@
-import { getElementFromDOM } from './Helpers.js';
-import { v4 as uuid } from 'uuid';
+import { getElementFromDOM, uuid } from './Helpers.js';
 
 const tableName = getElementFromDOM('.memory-game__title-name span');
 const tableLevel = getElementFromDOM('.memory-game__title-level span');
@@ -23,7 +22,16 @@ export default class User {
   }
 
   get name() {
-    return this.#name;
+    return this._name;
+  }
+
+  userForLeaderboard() {
+    return {
+      id: this._id,
+      name: this._name,
+      score: this._score,
+      level: this._gameLevel,
+    };
   }
 
   selectLevel(counterGames, scoreGame) {

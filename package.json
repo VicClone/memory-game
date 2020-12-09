@@ -4,12 +4,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "http-server": "^0.12.3",
-    "nodemon": "^2.0.6",
-    "uuid": "^8.3.2"
+    "nodemon": "^2.0.6"
   },
   "scripts": {
-    "server": "nodemon server.js",
-    "start": "http-server -p 8080 -c-1 ./src ",
+    "server": "nodemon --experimental-modules server.js",
     "type": "module"
   }
 }

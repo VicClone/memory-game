@@ -1,5 +1,5 @@
-import { getColorBg } from "./Strategy.js";
-import Card from "./Card.js";
+import { getColorBg } from './Strategy.js';
+import Card from './Card.js';
 
 function mapCards(gameLevel, counterGame, { pairsInGame, board }) {
   let mapCards = [];
@@ -30,9 +30,9 @@ function uniqueNum() {
 }
 
 function getRandomColor() {
-  const letters = "0123456789ABCDEF";
+  const letters = '0123456789ABCDEF';
   const colorNameLength = 6;
-  let color = "#";
+  let color = '#';
   for (let i = 0; i < colorNameLength; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -51,11 +51,19 @@ function setCardWidthHeight(table, pairs) {
     case 12:
       break;
     default:
-      table.querySelectorAll(".memory-game__card").forEach((el) => {
+      table.querySelectorAll('.memory-game__card').forEach((el) => {
         el.style.width = `${size - pairs}px`;
         el.style.height = `${size - pairs}px`;
       });
   }
+}
+
+function uuid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 }
 
 export {
@@ -65,4 +73,5 @@ export {
   mapCards,
   getElementFromDOM,
   setCardWidthHeight,
+  uuid,
 };

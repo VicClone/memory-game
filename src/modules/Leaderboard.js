@@ -1,26 +1,20 @@
-import { getElementFromDOM } from './Helpers';
+import { getElementFromDOM } from './Helpers.js';
 
 export default class Leaderboard {
-  write(userName, score, level) {
-    const player = {
-      name: userName,
-      score: score,
-      level: level,
-    };
-
-    fetch('/leaderboard', {
+  async write(player) {
+    await fetch('/leaderboard', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify(player),
     })
-      .then((response) => console.log(response))
+      .then((response) => response)
       .catch((error) => console.error(error));
   }
 
-  read() {
-    return fetch('/leaderboard')
+  async read() {
+    return await fetch('/leaderboard')
       .then((response) => {
         return response.json();
       })
@@ -30,42 +24,41 @@ export default class Leaderboard {
       .catch((error) => console.error(error));
   }
 
-  render(leaders) {
-    const leaderboardElement = getElementFromDOM('#lidearboard');
-    const leaderListElement = getElementFromDOM(
-      '.lidearboard__list',
-      leaderboardElement
+  async render(leaders) {
+    const leaderboardElement = document.getElementById('lidearboard');
+    const leaderListElement = leaderboardElement.querySelector(
+      '.lidearboard__list'
     );
-    const leaderListItemElement = getElementFromDOM(
-      '.lidearboard__list-item',
-      leaderboardElement
+    const leaderListItemElement = leaderboardElement.querySelector(
+      '.lidearboard__list-item'
     );
+
+    while (leaderListElement.children.length > 1) {
+      leaderListElement.removeChild(leaderListElement.lastChild);
+    }
 
     for (let i = 0; i < leaders.length; i++) {
       const leaderListItemCloneElement = leaderListItemElement.cloneNode(true);
-      const userPositionElement = getElementFromDOM(
-        '.lidearboard__position',
-        leaderListItemCloneElement
+      const userPositionElement = leaderListItemCloneElement.querySelector(
+        '.lidearboard__position'
       );
-      const userNameElement = getElementFromDOM(
-        '.lidearboard__name',
-        leaderListItemCloneElement
+      const userNameElement = leaderListItemCloneElement.querySelector(
+        '.lidearboard__name'
       );
-      const userScoreElement = getElementFromDOM(
-        '.lidearboard__score',
-        leaderListItemCloneElement
+      const userScoreElement = leaderListItemCloneElement.querySelector(
+        '.lidearboard__score'
       );
 
       userPositionElement.innerText = i + 1;
       userNameElement.innerText = leaders[i].name;
       userScoreElement.innerText = leaders[i].score;
 
-      leaderListElement.appendChild(leaderListItemCloneElement);
+      await leaderListElement.appendChild(leaderListItemCloneElement);
     }
   }
 
-  create() {
-    this.read().then((leaders) => {
+  async create() {
+    await this.read().then((leaders) => {
       leaders.sort((a, b) => b.score - a.score);
       this.render(leaders);
     });
