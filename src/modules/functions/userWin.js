@@ -1,11 +1,7 @@
 import { getElementFromDOM } from '../Helpers.js';
 import nextStepGame from './nextStepGame.js';
-import Leaderboard from '../Leaderboard.js';
 
 export default async function (context, score) {
-  const leaderboard = new Leaderboard();
-  const player = context.user.userForLeaderboard();
-
   const memoryTable = getElementFromDOM('#game-page');
   const endTable = getElementFromDOM('#end-page');
   const restartBtn = getElementFromDOM('#btn-restart');
@@ -16,14 +12,14 @@ export default async function (context, score) {
 
   finalScore.innerText = score.score;
   context.user.scoreUser = score.score;
-  player.score = context.user.scoreUser;
   finalScoreAll.textContent = context.user.scoreUser;
 
   memoryTable.classList.add('hide');
   endTable.classList.remove('hide');
 
-  await leaderboard.write(player);
-  await leaderboard.create();
+  const player = context.user.userForLeaderboard();
+  await context.leaderboard.write(player);
+  await context.leaderboard.create();
 
   restartBtn.onclick = () => {
     memoryTable.classList.remove('hide');

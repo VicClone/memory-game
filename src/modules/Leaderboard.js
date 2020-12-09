@@ -1,5 +1,3 @@
-import { getElementFromDOM } from './Helpers.js';
-
 export default class Leaderboard {
   async write(player) {
     await fetch('/leaderboard', {
@@ -9,7 +7,9 @@ export default class Leaderboard {
       },
       body: JSON.stringify(player),
     })
-      .then((response) => response)
+      .then((response) => {
+        return response;
+      })
       .catch((error) => console.error(error));
   }
 
@@ -18,9 +18,7 @@ export default class Leaderboard {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        return data;
-      })
+      .then((data) => data)
       .catch((error) => console.error(error));
   }
 
