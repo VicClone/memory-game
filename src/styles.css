@@ -89,8 +89,6 @@ body {
     z-index: 10;
     margin: 0;
     padding: 0;
-    /*margin-right: 50px;*/
-    /*background: url('img/style/border-vertical.png');*/
     background-position: right;
     background-repeat: repeat-y;
     padding-right: 25px;
@@ -100,7 +98,6 @@ body {
     display: flex;
     width: 75%;
     flex-direction: column;
-    /*grid-template-rows: 15% 80%;*/
 }
 
 .memory-game.hide {
@@ -147,32 +144,26 @@ body {
     align-items: start;
     height: 360px;
     flex-direction: column;
-    /*justify-content: space-around;*/
-    /*border-bottom: 2px solid #0970a7;*/
-    /*background-image: url("img/style/border-gorizont-2.png");*/
     background-position: bottom;
     background-repeat: repeat-x;
-}
-
-.memory-game__title-name {
 }
 
 .memory-game__title-level {
     text-align: center;
 }
 
-.memory-game__title-score,
-.memory-game__title-allScore {
-    /*text-align: right;*/
-}
 
 .memory-game__table {
-    margin: auto auto auto 10%;;
+    margin: auto auto auto 5%;;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 20px;
     perspective: 2000px;
+    padding: 15px;
+    border: 4px solid #8e1b11;
+    border-image: url(img/style/border-card.png) 15 round round;
+    background-color: wheat;
 }
 
 .cards-guesseding {
@@ -239,7 +230,6 @@ body {
     background-image: url('img/bg-back-white.png');
     width: 100%;
     height: 100%;
-    /*border-radius: 8px;*/
 }
 
 .memory-game__card-front,

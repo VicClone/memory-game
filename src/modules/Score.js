@@ -10,15 +10,16 @@ export default class Score {
   }
 
   timerId = 0;
-  #timer = null;
-  #timeStartGame = 0;
+  _timer = null;
+  _timeStartGame = 0;
 
   initialScore() {
-    this.#timer = new Timer();
-    this.#timeStartGame = new Date();
+    this.scoreEl.textContent = 0;
+    this._timer = new Timer();
+    this._timeStartGame = new Date();
   }
 
-  renderScore() {
+  _renderScore() {
     this.scoreEl.innerText = this.score;
   }
 
@@ -26,7 +27,7 @@ export default class Score {
     this.score += this.increaseCount;
     this.increaseCount = this.maxIncreaseValue;
 
-    this.renderScore();
+    this._renderScore();
   }
 
   decrease(value) {
@@ -35,20 +36,20 @@ export default class Score {
 
     this.score = scoreDecrease > 0 ? scoreDecrease : 0;
 
-    this.renderScore();
+    this._renderScore();
   }
 
   fineStart() {
-    this.#timer.intervalStart(this._fine, 1000, this);
+    this._timer.intervalStart(this._fine, 1000, this);
   }
 
   fineStop() {
-    this.#timer.intervalStop()
+    this._timer.intervalStop()
   }
 
   _fine(context) {
     if (context.increaseCount <= 1) {
-      context.#timer.intervalStop();
+      context._timer.intervalStop();
     }
 
     context.increaseCount -= 1;
@@ -56,7 +57,7 @@ export default class Score {
 
   addFineTimeGame() {
     const timeEndGame = new Date();
-    const timeGameInMinute = Math.floor((timeEndGame - this.#timeStartGame) / (1000 * 60));
+    const timeGameInMinute = Math.floor((timeEndGame - this._timeStartGame) / (1000 * 60));
     console.log(timeGameInMinute, 'minutes in game')
 
     this.decrease(timeGameInMinute);

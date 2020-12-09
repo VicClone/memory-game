@@ -1,10 +1,10 @@
 import { getElementFromDOM, randomOrder } from "./Helpers.js";
 
 export default class CardRender {
-  #card = this._createFromTemplate();
+  _card = this._createFromTemplate();
 
   get card() {
-    return this.#card;
+    return this._card;
   }
 
   _createFromTemplate() {
@@ -19,12 +19,12 @@ export default class CardRender {
   }
 
   _setFront(image) {
-    const frontImg = getElementFromDOM(".memory-game__card-front", this.#card);
+    const frontImg = getElementFromDOM(".memory-game__card-front", this._card);
     frontImg.src = `img/${image}`;
   }
 
   generatingBgCard(backGround) {
-    const frontBg = getElementFromDOM(".memory-game__card-front", this.#card);
+    const frontBg = getElementFromDOM(".memory-game__card-front", this._card);
     frontBg.style.background = backGround;
     return backGround;
   }
@@ -44,16 +44,16 @@ export default class CardRender {
 
   createElement(board, img) {
     this._setFront(img);
-    board.appendChild(this.#card);
+    board.appendChild(this._card);
   }
 
   flipCard(flipped) {
     if (!flipped) {
-      this.#card.classList.add("flip");
+      this._card.classList.add("flip");
       flipped = !flipped;
       return flipped;
     }
-    this.#card.classList.remove("flip");
+    this._card.classList.remove("flip");
     flipped = !flipped;
     return flipped;
   }
