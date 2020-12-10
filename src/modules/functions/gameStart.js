@@ -11,16 +11,6 @@ export default async function (context, score) {
   score.initialScore();
   context.leaderboard = new Leaderboard();
 
-  let users = {};
-  await context.leaderboard
-    .read()
-    .then((data) => {
-      users = data;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-
   const blockGuessed = getElementFromDOM('.cards-guesseding');
   blockGuessed.innerHTML = '';
   context.counterGames++;
@@ -28,8 +18,6 @@ export default async function (context, score) {
   if (!context.user) {
     context.user = new User();
   }
-  console.log(context.user);
-  console.log('users ', users);
 
   context.user.gameLevel = context.table.generatingMaps(
     context.user,

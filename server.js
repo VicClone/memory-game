@@ -9,7 +9,6 @@ const jsonParser = express.json();
 
 app.post('/leaderboard', jsonParser, (request, response) => {
   if (!request.body) return response.sendStatus(400);
-  console.log(request.body);
   addInJSON('leaderboard.json', request.body);
 
   response.json(request.body);
@@ -38,6 +37,7 @@ function addInJSON(fileName, data) {
     if (fs.existsSync(fileName)) {
       const read = readJSON(fileName);
       read.then((result) => {
+        result = result.filter((item) => item.id !== data.id);
         writeJSON(fileName, [...result, data]);
       });
     } else {

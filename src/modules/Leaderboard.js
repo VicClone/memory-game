@@ -7,9 +7,7 @@ export default class Leaderboard {
       },
       body: JSON.stringify(player),
     })
-      .then((response) => {
-        return response;
-      })
+      .then((response) => response)
       .catch((error) => console.error(error));
   }
 
@@ -22,7 +20,7 @@ export default class Leaderboard {
       .catch((error) => console.error(error));
   }
 
-  async render(leaders) {
+  render(leaders) {
     const leaderboardElement = document.getElementById('lidearboard');
     const leaderListElement = leaderboardElement.querySelector(
       '.lidearboard__list'
@@ -51,7 +49,7 @@ export default class Leaderboard {
       userNameElement.innerText = leaders[i].name;
       userScoreElement.innerText = leaders[i].score;
 
-      await leaderListElement.appendChild(leaderListItemCloneElement);
+      leaderListElement.appendChild(leaderListItemCloneElement);
     }
   }
 
