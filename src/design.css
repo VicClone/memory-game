@@ -19,6 +19,7 @@
 }
 
 .style__block--main{
+    position:relative;
     width: 100%;
     background-image: url('img/style/right-top2.png') ;
     background-repeat: no-repeat;
@@ -64,7 +65,8 @@
     font-size: 45px;
 }
 
-#btn-pause {
+#btn-pause,
+#btn-info{
     z-index: 1;
     border: none;
     position:absolute;
@@ -72,6 +74,9 @@
     top:38px;
     width: 50px;
     height: 50px;
+}
+
+#btn-pause {
     background:none ;
     background-image: url("img/style/pause.svg");
     background-repeat: no-repeat;
@@ -80,6 +85,21 @@
 
 #btn-pause:hover{
     background-image: url("img/style/pause-hover.svg");
+}
+
+.info__btn {
+    background:none ;
+    background-image: url("img/style/info.svg");
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+.info__btn:hover{
+    background-image: url("img/style/info-hover.svg");
+    cursor:pointer;
+}
+#btn-info:focus {
+    outline:none;
 }
 
 .memory-game__title-allScore {
@@ -119,4 +139,78 @@
 
 .border-green {
     border: 7px solid green
+}
+
+.memory-game__info {
+    position:absolute;
+    margin: auto;
+    top:100px;
+    width: 680px;
+    height: 750px;
+    z-index: 99;
+    background-image: url("img/style/bg-info.png");
+    text-align: center;
+    /*transform: translate(-2000px, -2000px);*/
+    transition: transform 0.5s;
+}
+
+.memory-game__info-title {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.memory-game__info--text {
+
+    display:inline-block;
+    line-height:26px;
+    text-align: left;
+    width: 500px;
+}
+
+.btn_close {
+    position:absolute;
+    right:10px;
+    top:10px;
+    outline:none;
+    width:35px;
+    height: 35px;
+    background-color: #8e1b11;
+    color:#fcfcfc;
+    border-radius:8px;
+}
+.btn_close:hover {
+    background-color: #ac4137;
+}
+
+/*стилизация скрола*/
+::-webkit-scrollbar-button {
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:5px;
+    height:0px
+}
+
+::-webkit-scrollbar-track {
+    background-color:#ecedee
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background-color:#109f0e;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color:#087606;
+}
+
+::-webkit-resizer{
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:4px;
+    height:0px
+}
+
+::-webkit-scrollbar{
+    width: 4px;
 }

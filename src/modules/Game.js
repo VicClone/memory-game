@@ -21,8 +21,12 @@ export default class Game {
     this._startBtn.onclick = () => {
       const memoryTable = getElementFromDOM('#game-page');
       const startTable = getElementFromDOM('#start-page');
+      const pauseBtn = getElementFromDOM('#btn-pause');
+      const infoBtn = getElementFromDOM('#btn-info');
       memoryTable.classList.remove('hide');
+      pauseBtn.classList.remove('hide');
       startTable.classList.add('hide');
+      infoBtn.classList.add('hide');
       this._context.state = 'start';
       nextStepGame(this._context);
     };

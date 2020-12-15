@@ -8,15 +8,63 @@
   <link rel="stylesheet" href="./design.css">
 </head>
 <body>
+
+
 <div class="style__block">
+
   <div class="style__block--left">
-    <div class="style__block--left-top"></div>
+    <div class="style__block--left-top">
+    </div>
   </div>
   <div class="style__block--main">
-    <button id="btn-pause" class="start-page__btn"></button>
+    <button id="btn-pause" class="start-page__btn hide"></button>
+    <button id="btn-info" class="info__btn"></button>
   </div>
+
+
 </div>
 <section id="start-page" class="start-page">
+  <section class="memory-game__info hide">
+    <button class="btn_close">X</button>
+    <h2 class="memory-game__info-title">Правила игры!</h2>
+    <div style="overflow: auto; width:530px; height:500px;"
+         class="memory-game__info--text">
+      <p>Все карточки перед началом игры
+        перемешиваются и раскладываются рядами лицевой стороной (картинкой)
+        вниз. Игрок по очереди открывает (переворачивает) по 2 карточки. Если
+        открыты одинаковые карточки, то игрок забирает их себе, получает очки
+        и открывает следующую пару карточек. Если карточки не совпадают -
+        карточки остаются на прежнем место лицевой стороной вниз. Уровень
+        выигран - если открыты все парные карточки!</p>
+      <h3>Стратегия игры следующая:</h3>
+      <ul>
+        <li>Уровень меняется после двух прохождений</li>
+        <li>Следующий уровень => больше карт</li>
+        <li>На первой игре каждого уровня фон однотонный</li>
+        <li>На второй игре каждого уровня фон = градиент</li>
+        <li>Уровень понижается на 1 - если в игре набрано меньше 8 очков</li>
+      </ul>
+      <h3>Подсчет очков:</h3>
+      <p> За каждую угаданную пару - получаешь 5 очков</p>
+      <p> За не угаданную пару - теряешь 1 очко</p>
+      <p> За каждую минуту в игре - теряешь 1 очко</p>
+
+      <h3>Уровни:</h3>
+      <ul>
+        <li>1 = 20 карт</li>
+        <li>2 = 24 карты</li>
+        <li>3 = 30 карт</li>
+        <li>4 = 36 карт</li>
+        <li>5 = 40 карт</li>
+        <li>6 = 42 карты</li>
+        <li>7 = 48 карт</li>
+        <li>8 = 56 карт</li>
+        <li> > 8 = 56 карт</li>
+      </ul>
+    </div>
+
+  </section>
+
   <img class="start-page__img" src="./img/start-logo2.png" alt="start-logo">
   <label>
     <input class="start-page__input name" tabindex="0" type="text"
