@@ -1,10 +1,11 @@
-import CardRender from "./CardRender.js";
+import CardRender from './CardRender.js';
+import guessedCard from './functions/guessedCard.js';
 
 export default class Card {
-  _bg = "";
+  _bg = '';
   _flipped = false;
-  _name = "";
-  _img = "";
+  _name = '';
+  _img = '';
   _render = new CardRender();
   _card = this._render.card;
 
@@ -29,7 +30,7 @@ export default class Card {
   }
 
   guessedCard(card) {
-    this._render.guessed(card.card);
+    guessedCard(card.card);
   }
 
   flip() {

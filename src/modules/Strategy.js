@@ -27,7 +27,7 @@ const getCardsInGame = function (gameLevel) {
     case undefined:
       return 10;
     case 1:
-      return 2;
+      return 10;
     case 2:
       tableMesh.style.gridTemplateColumns = 'repeat(6, 1fr)';
       return 12; //24 = сетка(6*4)

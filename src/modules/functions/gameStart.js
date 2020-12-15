@@ -4,6 +4,7 @@ import User from '../User.js';
 import nextStepGame from './nextStepGame.js';
 import Table from '../Table.js';
 import Leaderboard from '../Leaderboard.js';
+import cardsOnTheTable from './cardsOnTheTable.js';
 
 export default async function (context, score) {
   context.table = new Table();
@@ -30,7 +31,7 @@ export default async function (context, score) {
   setEventClickForPauseBtn(score);
   setEventClickForContinueBtn(score);
 
-  context.table.cardsOnTheTable();
+  cardsOnTheTable(context.table.cards);
   context.user.getInfoUser();
 }
 
