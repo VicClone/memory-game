@@ -1,5 +1,6 @@
 import { getElementFromDOM } from './Helpers.js';
 import nextStepGame from './functions/nextStepGame.js';
+import autoUser from './functions/autoUser.js';
 
 export default class Game {
   _context = {
@@ -14,6 +15,17 @@ export default class Game {
   _startBtn = getElementFromDOM('#btn-start');
 
   initialGame() {
+    document.addEventListener(
+      `keydown`,
+      (event) => {
+        if (event.ctrlKey && event.shiftKey && event.code === 'KeyL') {
+          event.preventDefault();
+          autoUser();
+        }
+      },
+      false
+    );
+
     this._setEventClickForStartBtn();
   }
 

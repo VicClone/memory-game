@@ -1,3 +1,5 @@
+import { getElementFromDOM } from './Helpers.js';
+
 export default class Leaderboard {
   async write(player) {
     await fetch('/leaderboard', {
@@ -21,12 +23,14 @@ export default class Leaderboard {
   }
 
   render(leaders) {
-    const leaderboardElement = document.getElementById('lidearboard');
-    const leaderListElement = leaderboardElement.querySelector(
-      '.lidearboard__list'
+    const leaderboardElement = getElementFromDOM('#lidearboard');
+    const leaderListElement = getElementFromDOM(
+      '.lidearboard__list',
+      leaderboardElement
     );
-    const leaderListItemElement = leaderboardElement.querySelector(
-      '.lidearboard__list-item'
+    const leaderListItemElement = getElementFromDOM(
+      '.lidearboard__list-item',
+      leaderboardElement
     );
 
     while (leaderListElement.children.length > 1) {
@@ -35,14 +39,17 @@ export default class Leaderboard {
 
     for (let i = 0; i < leaders.length; i++) {
       const leaderListItemCloneElement = leaderListItemElement.cloneNode(true);
-      const userPositionElement = leaderListItemCloneElement.querySelector(
-        '.lidearboard__position'
+      const userPositionElement = getElementFromDOM(
+        '.lidearboard__position',
+        leaderListItemCloneElement
       );
-      const userNameElement = leaderListItemCloneElement.querySelector(
-        '.lidearboard__name'
+      const userNameElement = getElementFromDOM(
+        '.lidearboard__name',
+        leaderListItemCloneElement
       );
-      const userScoreElement = leaderListItemCloneElement.querySelector(
-        '.lidearboard__score'
+      const userScoreElement = getElementFromDOM(
+        '.lidearboard__score',
+        leaderListItemCloneElement
       );
 
       userPositionElement.innerText = i + 1;

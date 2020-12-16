@@ -183,34 +183,34 @@
 }
 
 /*стилизация скрола*/
-::-webkit-scrollbar-button {
+.memory-game__info ::-webkit-scrollbar-button {
     background-image:url('');
     background-repeat:no-repeat;
-    width:5px;
+    width:10px;
     height:0px
 }
 
-::-webkit-scrollbar-track {
+.memory-game__info ::-webkit-scrollbar-track {
     background-color:#ecedee
 }
 
-::-webkit-scrollbar-thumb {
+.memory-game__info ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 0px;
     border-radius: 0px;
     background-color:#109f0e;
 }
 
-::-webkit-scrollbar-thumb:hover{
+.memory-game__info ::-webkit-scrollbar-thumb:hover{
     background-color:#087606;
 }
 
-::-webkit-resizer{
+.memory-game__info ::-webkit-resizer{
     background-image:url('');
     background-repeat:no-repeat;
-    width:4px;
+    width:8px;
     height:0px
 }
 
-::-webkit-scrollbar{
-    width: 4px;
+.memory-game__info ::-webkit-scrollbar{
+    width: 8px;
 }

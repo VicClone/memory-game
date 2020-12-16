@@ -11,7 +11,9 @@ export default class User {
   _score = 0;
 
   _getName() {
-    return getElementFromDOM('.name').value;
+    const nameUser = getElementFromDOM('.name').value;
+    localStorage.setItem('nameUser', nameUser);
+    return nameUser;
   }
 
   get gameLevel() {
