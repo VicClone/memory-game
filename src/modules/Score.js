@@ -9,7 +9,7 @@ export default class Score {
     this.increaseCount = this.maxIncreaseValue;
   }
 
-  timerId = 0;
+  _timerFineId = 0;
   _timer = null;
   _timeStartGame = 0;
 
@@ -40,17 +40,23 @@ export default class Score {
   }
 
   fineStart() {
-    this._timer.intervalStart(this._fine, 1000, this);
+    if (this._timerFineId !== 0) return;
+
+    this._timerFineId = this._timer.intervalStart(this._fine, 1000, this);
   }
 
   fineStop() {
-    this._timer.intervalStop()
+    this._timer.intervalStop(this._timerFineId);
+    this._timerFineId = 0;
   }
 
   _fine(context) {
+    // console.log(context.fineStop);
     if (context.increaseCount <= 1) {
-      context._timer.intervalStop();
+      context.fineStop();
     }
+    
+    console.log(context.increaseCount);
 
     context.increaseCount -= 1;
   }
