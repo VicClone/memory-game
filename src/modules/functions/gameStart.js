@@ -6,9 +6,9 @@ import Table from '../Table.js';
 import Leaderboard from '../Leaderboard.js';
 import cardsOnTheTable from './cardsOnTheTable.js';
 
-export default async function (context, score) {
+export default async function (context, lastScore) {
   context.table = new Table();
-  score = new Score();
+  const score = new Score(lastScore);
   score.initialScore();
   context.leaderboard = new Leaderboard();
 
@@ -60,6 +60,7 @@ function setEventClickForPauseBtn(score) {
   const pauseTable = getElementFromDOM('#pause-page');
   pauseBtn.onclick = () => {
     score.fineStop();
+    score.stopTimerGame();
     pauseTable.classList.remove('hide');
   };
 }
@@ -70,6 +71,7 @@ function setEventClickForContinueBtn(score) {
 
   continueBtn.onclick = () => {
     score.fineStart();
+    score.startTimerGame();
     pauseTable.classList.add('hide');
   };
 }

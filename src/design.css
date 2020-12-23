@@ -59,6 +59,11 @@
     font-size: 25px;
 }
 
+.memory-game__title-time {
+    font-size: 23px;
+    margin: auto;
+}
+
 #score,
 #scoreAll,
 .memory-game__title-level {

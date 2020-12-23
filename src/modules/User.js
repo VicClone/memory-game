@@ -9,6 +9,7 @@ export default class User {
   _name = this._getName() || 'Вы не назвались!';
   _gameLevel = 1;
   _score = 0;
+  _time = 0;
 
   _getName() {
     const nameUser = getElementFromDOM('.name').value;
@@ -33,6 +34,7 @@ export default class User {
       name: this._name,
       score: this._score,
       level: this._gameLevel,
+      time: this._time,
     };
   }
 
@@ -51,6 +53,13 @@ export default class User {
   }
   set scoreUser(value) {
     this._score += value;
+  }
+
+  get timeUser() {
+    return this._time;
+  }
+  set timeUser(value) {
+    this._time += value;
   }
 
   getInfoUser() {

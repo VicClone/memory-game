@@ -4,7 +4,6 @@ export default class Timer {
   }
 
   intervalStop(timerId) {
-    console.log(timerId);
     clearInterval(timerId);
   }
 }

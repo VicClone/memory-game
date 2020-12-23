@@ -66,6 +66,13 @@ function uuid() {
   });
 }
 
+function getTimeStr(time) {
+  const timeZoneOffsetInMiliseconds = new Date().getTimezoneOffset() * 60 * 1000;
+  const date = new Date(time + timeZoneOffsetInMiliseconds);
+  
+  return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+}
+
 export {
   randomOrder,
   uniqueNum,
@@ -74,4 +81,5 @@ export {
   getElementFromDOM,
   setCardWidthHeight,
   uuid,
+  getTimeStr,
 };

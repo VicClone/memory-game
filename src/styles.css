@@ -271,6 +271,10 @@ body {
     margin: 0 20px;
 }
 
+.lidearboard__time {
+    margin: 0 20px;
+}
+
 .lidearboard__score {
     text-align: right;
 }

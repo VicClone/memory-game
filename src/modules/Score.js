@@ -1,26 +1,35 @@
 import Timer from "./Timer.js";
-import { getElementFromDOM } from "./Helpers.js";
+import { getElementFromDOM, getTimeStr } from "./Helpers.js";
 
 export default class Score {
-  constructor() {
+  constructor(score) {
     this.score = 0;
     this.scoreEl = getElementFromDOM("#score");
+    this.timeEl = getElementFromDOM("#time");
     this.maxIncreaseValue = 5;
     this.increaseCount = this.maxIncreaseValue;
+    this.timeGame = score && score.timeGame ? score.timeGame : 0;
   }
-
+  
   _timerFineId = 0;
-  _timer = null;
+  _timerFine = null;
   _timeStartGame = 0;
-
+  _timerGameId = 0;
+  
   initialScore() {
     this.scoreEl.textContent = 0;
-    this._timer = new Timer();
+    this._timerFine = new Timer();
+    this._timerGame = new Timer();
     this._timeStartGame = new Date();
+    this.startTimerGame();
   }
 
   _renderScore() {
     this.scoreEl.innerText = this.score;
+  }
+
+  _renderTime(timeStr) {
+    this.timeEl.innerText = timeStr;
   }
 
   increase() {
@@ -42,16 +51,15 @@ export default class Score {
   fineStart() {
     if (this._timerFineId !== 0) return;
 
-    this._timerFineId = this._timer.intervalStart(this._fine, 1000, this);
+    this._timerFineId = this._timerFine.intervalStart(this._fine, 1000, this);
   }
 
   fineStop() {
-    this._timer.intervalStop(this._timerFineId);
+    this._timerFine.intervalStop(this._timerFineId);
     this._timerFineId = 0;
   }
 
   _fine(context) {
-    // console.log(context.fineStop);
     if (context.increaseCount <= 1) {
       context.fineStop();
     }
@@ -64,8 +72,21 @@ export default class Score {
   addFineTimeGame() {
     const timeEndGame = new Date();
     const timeGameInMinute = Math.floor((timeEndGame - this._timeStartGame) / (1000 * 60));
-    console.log(timeGameInMinute, 'minutes in game')
 
     this.decrease(timeGameInMinute);
+  }
+
+  startTimerGame() {
+    this._timerGameId = this._timerGame.intervalStart(this.timerStep, 1000, this);
+  }
+
+  stopTimerGame() {
+    this._timerGame.intervalStop(this._timerGameId);
+  }
+
+  timerStep(context) {
+    context.timeGame += 1000;
+    const timeStr = getTimeStr(context.timeGame);
+    context._renderTime(timeStr);
   }
 }

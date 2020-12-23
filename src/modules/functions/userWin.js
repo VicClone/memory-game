@@ -1,4 +1,4 @@
-import { getElementFromDOM } from '../Helpers.js';
+import { getElementFromDOM, getTimeStr } from '../Helpers.js';
 import nextStepGame from './nextStepGame.js';
 
 export default async function (context, score) {
@@ -7,12 +7,16 @@ export default async function (context, score) {
   const restartBtn = getElementFromDOM('#btn-restart');
   const finalScore = getElementFromDOM('#final-score');
   const finalScoreAll = getElementFromDOM('#all-score');
+  const finalTime = getElementFromDOM('#final-time');
 
   score.addFineTimeGame();
+  score.stopTimerGame();
 
   finalScore.innerText = score.score;
   context.user.scoreUser = score.score;
+  context.user.timeUser = score.timeGame;
   finalScoreAll.textContent = context.user.scoreUser;
+  finalTime.textContent = getTimeStr(context.user.timeUser);
 
   memoryTable.classList.add('hide');
   endTable.classList.remove('hide');

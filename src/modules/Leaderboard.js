@@ -1,4 +1,4 @@
-import { getElementFromDOM } from './Helpers.js';
+import { getElementFromDOM, getTimeStr } from './Helpers.js';
 
 export default class Leaderboard {
   async write(player) {
@@ -51,10 +51,15 @@ export default class Leaderboard {
         '.lidearboard__score',
         leaderListItemCloneElement
       );
+      const userTimeElement = getElementFromDOM(
+        '.lidearboard__time',
+        leaderListItemCloneElement
+      );
 
       userPositionElement.innerText = i + 1;
       userNameElement.innerText = leaders[i].name;
       userScoreElement.innerText = leaders[i].score;
+      userTimeElement.innerText = getTimeStr(leaders[i].time);
 
       leaderListElement.appendChild(leaderListItemCloneElement);
     }
