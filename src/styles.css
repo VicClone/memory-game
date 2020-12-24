@@ -221,6 +221,7 @@ body {
 .memory-game__card-front,
 .memory-game__card-back {
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .overseas {
