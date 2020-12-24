@@ -1,5 +1,6 @@
 import { getColorBg } from './Strategy.js';
 import Card from './Card.js';
+import Leaderboard from './Leaderboard.js';
 
 function mapCards(gameLevel, counterGame, { pairsInGame, board }) {
   let mapCards = [];
@@ -67,10 +68,36 @@ function uuid() {
 }
 
 function getTimeStr(time) {
-  const timeZoneOffsetInMiliseconds = new Date().getTimezoneOffset() * 60 * 1000;
+  const timeZoneOffsetInMiliseconds =
+    new Date().getTimezoneOffset() * 60 * 1000;
   const date = new Date(time + timeZoneOffsetInMiliseconds);
-  
+
   return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+}
+
+async function readJsonUsers() {
+  const leaderboard = new Leaderboard();
+  const users = await leaderboard.read();
+  const localId = localStorage.getItem('id');
+  const user = users.filter((el) => el.id === localId)[0];
+  if (!user) {
+    return;
+  }
+  return user;
+}
+
+function colorNameInLeaderboard() {
+  const leaderboardList = getElementFromDOM('.lidearboard__list');
+  const leaderListItems = leaderboardList.querySelectorAll(
+    '.lidearboard__list-item'
+  );
+  for (let item of leaderListItems) {
+    const name = item.querySelector('.lidearboard__name');
+    const nameLocal = localStorage.getItem('name');
+    if (name.textContent === nameLocal) {
+      item.style.backgroundColor = '#da7171';
+    }
+  }
 }
 
 export {
@@ -82,4 +109,6 @@ export {
   setCardWidthHeight,
   uuid,
   getTimeStr,
+  readJsonUsers,
+  colorNameInLeaderboard,
 };

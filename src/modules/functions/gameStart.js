@@ -18,6 +18,7 @@ export default async function (context, lastScore) {
 
   if (!context.user) {
     context.user = new User();
+    context.user.getScore().then();
   }
 
   context.user.gameLevel = context.table.generatingMaps(
