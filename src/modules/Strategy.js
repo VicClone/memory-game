@@ -46,12 +46,12 @@ const getCardsInGame = function (gameLevel) {
     case 7:
       tableMesh.style.gridTemplateColumns = 'repeat(8, 1fr)';
       return 24; //48 = сетка(8*6)
-    case 8:
-      tableMesh.style.gridTemplateColumns = 'repeat(8, 1fr)';
-      return 28; //56 = сетка(8*7)
+    // case 8:
+    //   tableMesh.style.gridTemplateColumns = 'repeat(8, 1fr)';
+    //   return 28; //56 = сетка(8*7)
     default:
       tableMesh.style.gridTemplateColumns = 'repeat(8, 1fr)';
-      return 28;
+      return 24;
   }
 };
 

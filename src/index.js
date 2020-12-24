@@ -1,16 +1,21 @@
 import Game from './modules/Game.js';
 import getInformations from './modules/functions/getInformations.js';
-import { getElementFromDOM } from './modules/Helpers.js';
+import { getElementFromDOM, readJsonUsers } from './modules/Helpers.js';
 
 getInformations();
-getLocalUser();
+getLocalUser().then();
 
 const game = new Game();
 game.initialGame();
 
-function getLocalUser() {
-  const localUser = localStorage.getItem('nameUser');
-  if (localUser) {
-    getElementFromDOM('.name').value = localUser;
+async function getLocalUser() {
+  const userIdLocal = localStorage.getItem('id');
+  if (userIdLocal) {
+    const userInfo = await readJsonUsers();
+    if (!userInfo) {
+      return;
+    }
+    getElementFromDOM('.name').value = userInfo.name;
+    getElementFromDOM('#level-game').value = userInfo.level;
   }
 }

@@ -1,4 +1,8 @@
-import { getElementFromDOM, getTimeStr } from './Helpers.js';
+import {
+  colorNameInLeaderboard,
+  getElementFromDOM,
+  getTimeStr,
+} from './Helpers.js';
 
 export default class Leaderboard {
   async write(player) {
@@ -70,5 +74,6 @@ export default class Leaderboard {
       leaders.sort((a, b) => b.score - a.score);
       this.render(leaders);
     });
+    colorNameInLeaderboard();
   }
 }

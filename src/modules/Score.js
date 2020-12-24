@@ -1,21 +1,21 @@
-import Timer from "./Timer.js";
-import { getElementFromDOM, getTimeStr } from "./Helpers.js";
+import Timer from './Timer.js';
+import { getElementFromDOM, getTimeStr } from './Helpers.js';
 
 export default class Score {
   constructor(score) {
     this.score = 0;
-    this.scoreEl = getElementFromDOM("#score");
-    this.timeEl = getElementFromDOM("#time");
+    this.scoreEl = getElementFromDOM('#score');
+    this.timeEl = getElementFromDOM('#time');
     this.maxIncreaseValue = 5;
     this.increaseCount = this.maxIncreaseValue;
     this.timeGame = score && score.timeGame ? score.timeGame : 0;
   }
-  
+
   _timerFineId = 0;
   _timerFine = null;
   _timeStartGame = 0;
   _timerGameId = 0;
-  
+
   initialScore() {
     this.scoreEl.textContent = 0;
     this._timerFine = new Timer();
@@ -63,21 +63,25 @@ export default class Score {
     if (context.increaseCount <= 1) {
       context.fineStop();
     }
-    
-    console.log(context.increaseCount);
 
     context.increaseCount -= 1;
   }
 
   addFineTimeGame() {
     const timeEndGame = new Date();
-    const timeGameInMinute = Math.floor((timeEndGame - this._timeStartGame) / (1000 * 60));
+    const timeGameInMinute = Math.floor(
+      (timeEndGame - this._timeStartGame) / (1000 * 60)
+    );
 
     this.decrease(timeGameInMinute);
   }
 
   startTimerGame() {
-    this._timerGameId = this._timerGame.intervalStart(this.timerStep, 1000, this);
+    this._timerGameId = this._timerGame.intervalStart(
+      this.timerStep,
+      1000,
+      this
+    );
   }
 
   stopTimerGame() {
